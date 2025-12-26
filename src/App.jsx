@@ -1,185 +1,133 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { KeyboardArrowUp } from '@mui/icons-material';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import Coursoul from './components/Coursoul';
-import Main1 from './components/Main1';
-import Main2 from './components/Main2';
-import Marquee from './components/Marquee';
-import Navbar from './components/Navbar';
-import Checkout from './components/Checkout';
-import Main3 from './components/Main3';
-import Footer from './components/Footer';
-import About from './components/Faculty';
-import Moto from './components/Moto';
-import Campus from './components/Campus';
-import College from './components/About';
-import Contact from './components/Contact';
-import Timer from './components/Timer';
-import Events from './components/Events';
-import Curriculum from './components/Curriculum';
-import Faculty from './components/Faculty';
-import Students from './components/Students';
-
-function App() {
-  const [isVisible, setIsVisible] = useState(false);
+export default function App() {
+  const navigate = useNavigate();
+  const [projectCount, setProjectCount] = useState(0);
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
+    const count = parseInt(localStorage.getItem("sk_project_count")) || 0;
+    setProjectCount(count);
   }, []);
 
-  const toggleVisibility = () => {
-    setIsVisible(window.scrollY > 300);
+  const createProject = () => {
+    const nextId = projectCount + 1;
+
+    const projects =
+      JSON.parse(localStorage.getItem("sk_projects")) || [];
+
+    projects.push({
+      id: nextId,
+      createdAt: Date.now(),
+      language: "javascript",
+      files: {
+        "index.js": "console.log('Welcome to Skynefh CodeLab');",
+      },
+    });
+
+    localStorage.setItem("sk_projects", JSON.stringify(projects));
+    localStorage.setItem("sk_project_count", nextId.toString());
+
+    navigate(`/myproject/${nextId}`);
   };
 
   return (
-    <Router>
-      <div className='bg-gray-100'>
-        <Navbar />
-        <Routes>
-          <Route
-            exact
-            path='/'
-            element={
-              <div>
-                <Coursoul />
-                <Marquee text={`"Welcome to Springdale Public School, where we nurture young minds for a brighter future."`} />
-                <Timer />
-                <Marquee text={`"Join us for our Annual Science Exhibition, where students showcase innovative science projects and experiments."`} />
-                <Main2 />
-                <Checkout />
-                <Main1 />
-                <Main3 />
-              </div>
-            }
-          />
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-zinc-900 to-slate-900 text-white">
+      <Navbar />
 
-          <Route
-            exact
-            path='/faculty'
-            element={
-              <>
-                <Faculty />
-                <Main2 />
-                <Checkout />
-                <Main3 />
-              </>
-            }
-          />
+      <section className="flex-1 flex items-center justify-center px-6 py-24">
+        <div className="max-w-7xl w-full grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
+              A Simple<br />
+              <span className="text-sky-400">Private Code Playground</span>
+            </h1>
 
-          <Route
-            exact
-            path='/students'
-            element={
-              <>
-                <Students />
-                <Main2 />
-                <Checkout />
-                <Main3 />
-              </>
-            }
-          />
+            <p className="text-zinc-300 text-lg max-w-xl">
+              Skynefh CodeLab lets you create small coding projects instantly.
+              No setup. No login. Everything stays private on your device.
+            </p>
 
-          <Route
-            exact
-            path='/campus'
-            element={
-              <>
-                <Campus />
-                <Main2 />
-                <Checkout />
-                <Main1 />
-                <Main3 />
-              </>
-            }
-          />
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={createProject}
+                className="px-8 py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-black font-semibold transition-all duration-300 hover:scale-105"
+              >
+                Create Project
+              </button>
 
-          <Route
-            exact
-            path='/events'
-            element={
-              <>
-                <Events />
-                <Main2 />
-                <Checkout />
-                <Main1 />
-                <Main3 />
-              </>
-            }
-          />
+              <button
+                onClick={() => navigate("/myproject")}
+                className="px-8 py-4 rounded-xl border border-zinc-700 hover:border-zinc-400 text-white transition-all duration-300 hover:scale-105"
+              >
+                Show Projects
+              </button>
+            </div>
+          </div>
 
-          <Route
-            exact
-            path='/curriculum'
-            element={
-              <>
-                <Curriculum />
-                <Main2 />
-                <Checkout />
-                <Main3 />
-              </>
-            }
-          />
+          <div className="relative">
+            <div className="absolute -inset-4 bg-sky-500/20 blur-3xl rounded-full"></div>
+            <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
+              <pre className="text-sm text-zinc-300 overflow-hidden">
+{`project/
+ ├── index.js
+ └── output
 
-          <Route
-            exact
-            path='/moto'
-            element={
-              <>
-                <Moto />
-                <Main2 />
-                <Checkout />
-                <Main3 />
-              </>
-            }
-          />
+> node index.js
+Welcome to Skynefh CodeLab`}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <Route
-            exact
-            path='/aboutus'
-            element={
-              <>
-                <College />
-                <Main2 />
-                <Checkout />
-                <Main1 />
-                <Main3 />
-              </>
-            }
-          />
+      <section className="px-6 py-24 bg-black/40">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+          <div className="p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-sky-500 transition">
+            <h3 className="text-xl font-semibold mb-3">Instant Projects</h3>
+            <p className="text-zinc-400">
+              Create a project in one click with a ready-to-code main file.
+            </p>
+          </div>
 
-          <Route
-            exact
-            path='/contact'
-            element={
-              <>
-                <Contact />
-                <Main2 />
-                <Checkout />
-                <Main3 />
-              </>
-            }
-          />
+          <div className="p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-sky-500 transition">
+            <h3 className="text-xl font-semibold mb-3">Multi File Support</h3>
+            <p className="text-zinc-400">
+              Add, delete, or upload files inside your project workspace.
+            </p>
+          </div>
 
-          <Route path='*' element={<Navigate to="/" />} />
-        </Routes>
+          <div className="p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-sky-500 transition">
+            <h3 className="text-xl font-semibold mb-3">Run & See Output</h3>
+            <p className="text-zinc-400">
+              Execute your code and see the result instantly below the editor.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {isVisible && (
+      <section className="px-6 py-28">
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          <h2 className="text-4xl font-bold">
+            Built for Focused Coding
+          </h2>
+          <p className="text-zinc-400 text-lg">
+            No public sharing. No distractions. Just you, your code,
+            and a clean environment to experiment.
+          </p>
+
           <button
-            className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-2 rounded shadow"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={createProject}
+            className="mt-6 px-10 py-4 rounded-full bg-gradient-to-r from-sky-400 to-cyan-300 text-black font-bold hover:scale-105 transition-transform"
           >
-            <KeyboardArrowUp />
+            Start Coding Now
           </button>
-        )}
-        <Footer />
-      </div>
-    </Router>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   );
 }
-
-export default App;
