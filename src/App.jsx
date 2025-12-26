@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
@@ -10,8 +10,7 @@ import {
   FaCode, FaFolderOpen, FaBug, FaArrowRight, FaCheckCircle 
 } from 'react-icons/fa';
 
-// --- DATA ICON MAPPING ---
-// Mapping ikon untuk memudahkan rendering di komponen FeatureCard
+// --- DATA ICON MAPPING (Memastikan ikon dirender sebagai komponen) ---
 const IconMap = {
     FaLock, FaBolt, FaMagic, FaGlobe, FaUserSlash, FaRocket, 
     FaCode, FaFolderOpen, FaBug, FaArrowRight, FaCheckCircle
@@ -19,6 +18,7 @@ const IconMap = {
 
 const RenderFaIcon = ({ iconName, className = "text-sky-400" }) => {
     const IconComponent = IconMap[iconName];
+    // Pastikan IconComponent ada dan merupakan komponen yang valid
     if (!IconComponent) return null;
     return <IconComponent className={className} />;
 };
@@ -91,11 +91,11 @@ export default function App() {
 
   const WhyChooseData = [
     { title: "Private First", description: "Your projects stay on your device.", icon: "FaLock" },
-    { title: "Fast Execution", description: "Run code instantly without setup.", icon: "FaBolt" },
-    { title: "Modern UI", description: "Clean, focused, distraction-free.", icon: "FaMagic" },
-    { title: "Multi Language", description: "Designed to scale with more languages.", icon: "FaGlobe" },
-    { title: "No Accounts", description: "No signups. No tracking.", icon: "FaUserSlash" },
-    { title: "Future Ready", description: "Built for growth and extensibility.", icon: "FaRocket" },
+    { title: "Fast Execution", "description": "Run code instantly without setup.", icon: "FaBolt" },
+    { title: "Modern UI", "description": "Clean, focused, distraction-free.", icon: "FaMagic" },
+    { title: "Multi Language", "description": "Designed to scale with more languages.", icon: "FaGlobe" },
+    { title: "No Accounts", "description": "No signups. No tracking.", icon: "FaUserSlash" },
+    { title: "Future Ready", "description": "Built for growth and extensibility.", icon: "FaRocket" },
   ];
 
   const TestimonialsData = [
@@ -165,6 +165,7 @@ export default function App() {
 
   return (
     <div className="bg-black text-white overflow-x-hidden min-h-screen">
+      {/* Jika white screen, pastikan Navbar dan Footer tidak error */}
       <Navbar />
 
       {/* 1. HERO SECTION */}
@@ -419,4 +420,4 @@ console.log('Fib(15):', result);
       <Footer />
     </div>
   );
-}
+    }
