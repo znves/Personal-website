@@ -1,13 +1,28 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-// --- Data Icons (Ganti dengan Komponen Fa Asli dari react-icons) ---
-const FaIcon = ({ iconName, className = "" }) => (
-  <span className={`text-sky-400 ${className}`}>{iconName}</span>
-);
+// --- IMPOR IKON FONT AWESOME DARI REACT-ICONS ---
+import { 
+  FaLock, FaBolt, FaMagic, FaGlobe, FaUserSlash, FaRocket, 
+  FaCode, FaFolderOpen, FaBug, FaArrowRight, FaCheckCircle 
+} from 'react-icons/fa';
+
+// --- DATA ICON MAPPING ---
+// Mapping ikon untuk memudahkan rendering di komponen FeatureCard
+const IconMap = {
+    FaLock, FaBolt, FaMagic, FaGlobe, FaUserSlash, FaRocket, 
+    FaCode, FaFolderOpen, FaBug, FaArrowRight, FaCheckCircle
+};
+
+const RenderFaIcon = ({ iconName, className = "text-sky-400" }) => {
+    const IconComponent = IconMap[iconName];
+    if (!IconComponent) return null;
+    return <IconComponent className={className} />;
+};
+// --------------------------------------------------------------------
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -63,7 +78,7 @@ export default function App() {
       className="p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-sky-500 hover:shadow-sky-500/20 transition-all duration-300 shadow-xl space-y-4"
     >
       <div className="text-3xl mb-3">
-        <FaIcon iconName={icon} className="text-4xl"/>
+        <RenderFaIcon iconName={icon} className="text-4xl text-sky-400"/>
       </div>
       <h3 className="text-2xl font-semibold text-white">
         {title}
@@ -98,19 +113,29 @@ export default function App() {
     { title: "Error Tracing", description: "Clear, helpful error output for easy debugging.", icon: "FaBug" },
   ];
 
-  // --- Komponen Running Testimonials (Didefinisikan di dalam App agar Hooks berfungsi) ---
+  // --- Komponen Running Testimonials (Otomatis/Marquee) ---
   const RunningTestimonials = () => {
-    const scrollRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: scrollRef });
-    
-    // Animasikan pergeseran dari kiri ke kanan saat discroll
-    const x = useTransform(scrollYProgress, [0, 1], ["-10%", "50%"]); 
-
+    // Duplikasi data untuk transisi loop yang mulus
     const duplicatedTestimonials = [...TestimonialsData, ...TestimonialsData];
+    
+    // Perhitungan lebar total yang harus digeser 
+    // (Lebar Card 350px + Gap/Space 32px) * Jumlah Card
+    const cardWidth = 350 + 32; 
+    const totalWidth = cardWidth * TestimonialsData.length; 
 
     return (
-      <div ref={scrollRef} className="overflow-hidden whitespace-nowrap py-16">
-        <motion.div style={{ x }} className="flex space-x-8">
+      <div className="overflow-hidden whitespace-nowrap py-16">
+        <motion.div 
+          className="flex space-x-8"
+          initial={{ x: 0 }}
+          animate={{ x: `-${totalWidth}px` }} 
+          transition={{
+            duration: 40, // Kecepatan lari: semakin besar, semakin lambat
+            ease: "linear",
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+        >
           {duplicatedTestimonials.map((item, i) => (
             <div
               key={i}
@@ -137,14 +162,12 @@ export default function App() {
     );
   };
   
-  // Catatan: RunningTestimonials harus didefinisikan di sini
-  // atau dipisah ke file terpisah dan diimpor (tapi melanggar syarat impor)
 
   return (
     <div className="bg-black text-white overflow-x-hidden min-h-screen">
       <Navbar />
 
-      {/* 1. HERO SECTION (UPGRADED) */}
+      {/* 1. HERO SECTION */}
       <section className="relative min-h-screen flex items-center pt-24 pb-12">
         <img
           src="https://images.unsplash.com/photo-1549490349-012b1d556554?q=80&w=2600&auto=format&fit=crop"
@@ -182,9 +205,9 @@ export default function App() {
             >
               <button
                 onClick={createProject}
-                className="px-8 py-4 rounded-full bg-sky-500 text-black font-bold text-md hover:bg-sky-400 hover:scale-[1.02] transition-transform shadow-lg shadow-sky-500/40"
+                className="px-8 py-4 rounded-full bg-sky-500 text-black font-bold text-md hover:bg-sky-400 hover:scale-[1.02] transition-transform shadow-lg shadow-sky-500/40 flex items-center space-x-2"
               >
-                Start Coding Now <FaIcon iconName="FaArrowRight"/>
+                <span>Start Coding Now</span> <RenderFaIcon iconName="FaArrowRight" className="text-black"/>
               </button>
 
               <button
@@ -258,10 +281,10 @@ console.log('Fib(15):', result);
             </motion.p>
 
             <motion.ul variants={staggerContainer} className="space-y-4 text-zinc-300 text-lg pt-4">
-              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Instant environment setup</motion.li>
-              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Multi-file workspace support</motion.li>
-              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Private by default (Local Storage)</motion.li>
-              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Lightweight & fast execution</motion.li>
+              <motion.li variants={fadeIn} className="flex items-center space-x-3"><RenderFaIcon iconName="FaCheckCircle"/> <span>Instant environment setup</span></motion.li>
+              <motion.li variants={fadeIn} className="flex items-center space-x-3"><RenderFaIcon iconName="FaCheckCircle"/> <span>Multi-file workspace support</span></motion.li>
+              <motion.li variants={fadeIn} className="flex items-center space-x-3"><RenderFaIcon iconName="FaCheckCircle"/> <span>Private by default (Local Storage)</span></motion.li>
+              <motion.li variants={fadeIn} className="flex items-center space-x-3"><RenderFaIcon iconName="FaCheckCircle"/> <span>Lightweight & fast execution</span></motion.li>
             </motion.ul>
           </motion.div>
         </div>
@@ -300,7 +323,7 @@ console.log('Fib(15):', result);
         </div>
       </section>
       
-      {/* 4. TECHNICAL FEATURES (NEW SECTION + NEW IMAGE) */}
+      {/* 4. TECHNICAL FEATURES (IMAGE + TEXT) */}
       <section className="py-24 md:py-40 bg-black">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -327,7 +350,7 @@ console.log('Fib(15):', result);
                 >
                     {TechnicalFeatures.map((item, i) => (
                         <motion.div key={i} variants={fadeIn} className="flex space-x-4 items-start">
-                            <FaIcon iconName={item.icon} className="text-2xl mt-1 flex-shrink-0"/>
+                            <RenderFaIcon iconName={item.icon} className="text-2xl mt-1 flex-shrink-0"/>
                             <div>
                                 <h4 className="font-semibold text-xl text-white">{item.title}</h4>
                                 <p className="text-zinc-500">{item.description}</p>
@@ -349,7 +372,7 @@ console.log('Fib(15):', result);
         </div>
       </section>
 
-      {/* 5. TESTIMONIALS SECTION (RUNNING HORIZONTAL) */}
+      {/* 5. TESTIMONIALS SECTION (RUNNING HORIZONTAL - OTOMATIS) */}
       <section className="py-24 bg-zinc-950 overflow-hidden">
         <motion.h2
           className="text-5xl md:text-6xl font-extrabold text-center mb-16"
@@ -386,9 +409,9 @@ console.log('Fib(15):', result);
 
           <button
             onClick={createProject}
-            className="mt-8 px-10 py-4 rounded-full bg-gradient-to-r from-sky-400 to-cyan-300 text-black font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl shadow-cyan-400/40"
+            className="mt-8 px-10 py-4 rounded-full bg-gradient-to-r from-sky-400 to-cyan-300 text-black font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl shadow-cyan-400/40 flex items-center space-x-2"
           >
-            Create Your First Project <FaIcon iconName="FaCode"/>
+            <span>Create Your First Project</span> <RenderFaIcon iconName="FaCode" className="text-black"/>
           </button>
         </motion.div>
       </section>
@@ -396,4 +419,4 @@ console.log('Fib(15):', result);
       <Footer />
     </div>
   );
-                        }
+                }
