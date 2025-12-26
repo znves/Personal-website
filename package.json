@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  ""dependencies": {
+  "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.13.0",
