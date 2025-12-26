@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+// --- Data Icons (Ganti dengan Komponen Fa Asli dari react-icons) ---
+const FaIcon = ({ iconName, className = "" }) => (
+  <span className={`text-sky-400 ${className}`}>{iconName}</span>
+);
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -17,7 +22,7 @@ const staggerContainer = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -57,7 +62,9 @@ export default function App() {
       transition={{ delay: index * 0.1 }}
       className="p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-sky-500 hover:shadow-sky-500/20 transition-all duration-300 shadow-xl space-y-4"
     >
-      <div className="text-3xl text-sky-400 mb-3">{icon}</div>
+      <div className="text-3xl mb-3">
+        <FaIcon iconName={icon} className="text-4xl"/>
+      </div>
       <h3 className="text-2xl font-semibold text-white">
         {title}
       </h3>
@@ -68,19 +75,70 @@ export default function App() {
   );
 
   const WhyChooseData = [
-    { title: "Private First", description: "Your projects stay on your device.", icon: "🔒" },
-    { title: "Fast Execution", description: "Run code instantly without setup.", icon: "⚡️" },
-    { title: "Modern UI", description: "Clean, focused, distraction-free.", icon: "✨" },
-    { title: "Multi Language", description: "Designed to scale with more languages.", icon: "🌐" },
-    { title: "No Accounts", description: "No signups. No tracking.", icon: "🚫" },
-    { title: "Future Ready", description: "Built for growth and extensibility.", icon: "🔭" },
+    { title: "Private First", description: "Your projects stay on your device.", icon: "FaLock" },
+    { title: "Fast Execution", description: "Run code instantly without setup.", icon: "FaBolt" },
+    { title: "Modern UI", description: "Clean, focused, distraction-free.", icon: "FaMagic" },
+    { title: "Multi Language", description: "Designed to scale with more languages.", icon: "FaGlobe" },
+    { title: "No Accounts", description: "No signups. No tracking.", icon: "FaUserSlash" },
+    { title: "Future Ready", description: "Built for growth and extensibility.", icon: "FaRocket" },
   ];
 
   const TestimonialsData = [
-    { quote: "Skynefh changed how I prototype ideas. It's truly instant.", name: "Alex J.", role: "Lead Engineer" },
-    { quote: "The best tool for teaching beginners. Zero setup friction.", name: "Maria L.", role: "Code Educator" },
-    { quote: "Finally, a coding playground that respects privacy. Fast and clean.", name: "David C.", role: "Full-Stack Dev" },
+    { quote: "Skynefh changed how I prototype ideas. It's truly instant and the privacy focus is great.", name: "Alex J.", role: "Lead Engineer", avatar: "https://randomuser.me/api/portraits/men/45.jpg" },
+    { quote: "The best tool for teaching beginners. Simple interface and zero setup friction.", name: "Maria L.", role: "Code Educator", avatar: "https://randomuser.me/api/portraits/women/65.jpg" },
+    { quote: "Finally, a coding playground that respects privacy. Fast, clean, and effective.", name: "David C.", role: "Full-Stack Dev", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { quote: "Sangat *reliable* untuk eksperimen cepat tanpa perlu *setting* lingkungan lokal.", name: "Rina S.", role: "Junior Developer", avatar: "https://randomuser.me/api/portraits/women/12.jpg" },
+    { quote: "Tampilan yang bersih dan ringan membuat coding terasa lebih fokus.", name: "Kenji T.", role: "UI/UX Designer", avatar: "https://randomuser.me/api/portraits/men/88.jpg" },
+    { quote: "Kemampuan *multi-file* benar-benar membedakannya dari *playground* lain.", name: "Sarah P.", role: "Backend Specialist", avatar: "https://randomuser.me/api/portraits/women/23.jpg" },
   ];
+  
+  const TechnicalFeatures = [
+    { title: "WebAssembly Ready", description: "Future-proof engine for high-performance execution.", icon: "FaCode" },
+    { title: "File System API", description: "Simulated local file structure for complex projects.", icon: "FaFolderOpen" },
+    { title: "Error Tracing", description: "Clear, helpful error output for easy debugging.", icon: "FaBug" },
+  ];
+
+  // --- Komponen Running Testimonials ---
+  const RunningTestimonials = () => {
+    const scrollRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: scrollRef });
+    
+    // Animasikan pergeseran dari kiri ke kanan saat discroll
+    const x = useTransform(scrollYProgress, [0, 1], ["-10%", "50%"]); 
+
+    const duplicatedTestimonials = [...TestimonialsData, ...TestimonialsData];
+
+    return (
+      <div ref={scrollRef} className="overflow-hidden whitespace-nowrap py-16">
+        <motion.div style={{ x }} className="flex space-x-8">
+          {duplicatedTestimonials.map((item, i) => (
+            <div
+              key={i}
+              className="inline-block w-[350px] flex-shrink-0 p-6 rounded-xl bg-zinc-900 border border-zinc-800 shadow-xl"
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <img 
+                  src={item.avatar} 
+                  alt={item.name} 
+                  className="w-12 h-12 rounded-full object-cover border-2 border-sky-400"
+                />
+                <div>
+                  <p className="font-semibold text-white">{item.name}</p>
+                  <p className="text-sm text-zinc-500">{item.role}</p>
+                </div>
+              </div>
+              <p className="text-lg text-zinc-300">
+                "{item.quote}"
+              </p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    );
+  };
+  
+  // Impor useRef yang dibutuhkan untuk RunningTestimonials
+  const { useRef } = require("react"); 
 
   return (
     <div className="bg-black text-white overflow-x-hidden min-h-screen">
@@ -120,18 +178,18 @@ export default function App() {
 
             <motion.div 
               variants={fadeIn}
-              className="flex gap-6 flex-wrap pt-4"
+              className="flex gap-4 flex-wrap pt-4"
             >
               <button
                 onClick={createProject}
-                className="px-12 py-5 rounded-full bg-sky-500 text-black font-bold text-lg hover:bg-sky-400 hover:scale-[1.03] transition-transform shadow-lg shadow-sky-500/40"
+                className="px-8 py-4 rounded-full bg-sky-500 text-black font-bold text-md hover:bg-sky-400 hover:scale-[1.02] transition-transform shadow-lg shadow-sky-500/40"
               >
-                Start Coding Now 🚀
+                Start Coding Now <FaIcon iconName="FaArrowRight"/>
               </button>
 
               <button
                 onClick={() => navigate("/myproject")}
-                className="px-12 py-5 rounded-full border border-white/20 text-white text-lg hover:border-sky-400 hover:text-sky-400 transition-all duration-300"
+                className="px-8 py-4 rounded-full border border-white/20 text-white text-md hover:border-sky-400 hover:text-sky-400 transition-all duration-300"
               >
                 View My Projects
               </button>
@@ -154,16 +212,15 @@ export default function App() {
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
               </div>
-              <pre className="text-sm text-zinc-300 leading-relaxed pt-4 font-mono overflow-auto">
-{`const greet = (user) => {
-  return \`console.log('Hello, \${user}!');\`;
+              <pre className="text-sm text-zinc-300 leading-relaxed pt-4 font-mono overflow-auto h-64">
+{`const fibonacci = (n) => {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
 };
 
-// Start your rapid experiment here
-console.log(greet("Skynefh User"));
-
-// Output:
-// Hello, Skynefh User!
+// Start heavy calculation
+const result = fibonacci(15);
+console.log('Fib(15):', result);
 `}
               </pre>
             </div>
@@ -180,7 +237,7 @@ console.log(greet("Skynefh User"));
             className="rounded-3xl shadow-2xl border border-zinc-800"
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8 }}
           />
 
@@ -188,7 +245,7 @@ console.log(greet("Skynefh User"));
             className="space-y-8"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.5 }}
             variants={staggerContainer}
           >
             <motion.h2 variants={fadeIn} className="text-5xl font-extrabold text-sky-400">
@@ -201,10 +258,10 @@ console.log(greet("Skynefh User"));
             </motion.p>
 
             <motion.ul variants={staggerContainer} className="space-y-4 text-zinc-300 text-lg pt-4">
-              <motion.li variants={fadeIn}>• Instant environment setup</motion.li>
-              <motion.li variants={fadeIn}>• Multi-file workspace support</motion.li>
-              <motion.li variants={fadeIn}>• Private by default (Local Storage)</motion.li>
-              <motion.li variants={fadeIn}>• Lightweight & fast execution</motion.li>
+              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Instant environment setup</motion.li>
+              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Multi-file workspace support</motion.li>
+              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Private by default (Local Storage)</motion.li>
+              <motion.li variants={fadeIn}><FaIcon iconName="FaCheckCircle"/> Lightweight & fast execution</motion.li>
             </motion.ul>
           </motion.div>
         </div>
@@ -242,45 +299,74 @@ console.log(greet("Skynefh User"));
           </motion.div>
         </div>
       </section>
-
-      {/* 4. TESTIMONIALS SECTION (NEW) */}
-      <section className="py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.h2
-            className="text-5xl md:text-6xl font-extrabold text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7 }}
-          >
-            What Our <span className="text-sky-400">Users Say</span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {TestimonialsData.map((item, i) => (
-              <motion.div
-                key={i}
-                className="p-8 rounded-xl bg-zinc-900 border border-zinc-800 shadow-xl transition-transform hover:scale-[1.02] duration-500"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+      
+      {/* 4. TECHNICAL FEATURES (NEW SECTION + NEW IMAGE) */}
+      <section className="py-24 md:py-40 bg-black">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <motion.div
+                className="space-y-8"
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-              >
-                <p className="text-xl italic text-zinc-300 mb-6">
-                  "{item.quote}"
-                </p>
-                <div className="pt-4 border-t border-zinc-700">
-                  <p className="font-semibold text-sky-400">{item.name}</p>
-                  <p className="text-sm text-zinc-500">{item.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                variants={staggerContainer}
+            >
+                <motion.h2 variants={fadeIn} className="text-5xl font-extrabold text-sky-400">
+                    Technical Edge
+                </motion.h2>
+
+                <motion.p variants={fadeIn} className="text-zinc-400 text-lg">
+                    We use modern browser technologies to ensure your coding environment is always fast, secure, and ready for advanced projects.
+                </motion.p>
+                
+                <motion.div 
+                    className="grid grid-cols-1 gap-6 pt-4"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={staggerContainer}
+                >
+                    {TechnicalFeatures.map((item, i) => (
+                        <motion.div key={i} variants={fadeIn} className="flex space-x-4 items-start">
+                            <FaIcon iconName={item.icon} className="text-2xl mt-1 flex-shrink-0"/>
+                            <div>
+                                <h4 className="font-semibold text-xl text-white">{item.title}</h4>
+                                <p className="text-zinc-500">{item.description}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </motion.div>
+            
+            <motion.img
+                src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=2670&auto=format&fit=crop"
+                alt="Cloud computing network"
+                className="rounded-3xl shadow-2xl border border-zinc-800"
+                initial={{ opacity: 0, x: 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.8 }}
+            />
         </div>
       </section>
 
+      {/* 5. TESTIMONIALS SECTION (RUNNING HORIZONTAL) */}
+      <section className="py-24 bg-zinc-950 overflow-hidden">
+        <motion.h2
+          className="text-5xl md:text-6xl font-extrabold text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7 }}
+        >
+          Community <span className="text-sky-400">Feedback</span>
+        </motion.h2>
+        
+        <RunningTestimonials />
+        
+      </section>
 
-      {/* 5. CALL TO ACTION FINAL */}
+
+      {/* 6. CALL TO ACTION FINAL */}
       <section className="py-32 md:py-48 bg-gradient-to-br from-zinc-900 to-black">
         <motion.div
           className="max-w-5xl mx-auto px-6 text-center space-y-10"
@@ -300,9 +386,9 @@ console.log(greet("Skynefh User"));
 
           <button
             onClick={createProject}
-            className="mt-8 px-16 py-6 rounded-full bg-gradient-to-r from-sky-400 to-cyan-300 text-black font-bold text-xl hover:scale-105 transition-transform duration-300 shadow-xl shadow-cyan-400/40"
+            className="mt-8 px-10 py-4 rounded-full bg-gradient-to-r from-sky-400 to-cyan-300 text-black font-bold text-lg hover:scale-105 transition-transform duration-300 shadow-xl shadow-cyan-400/40"
           >
-            Create Your First Project
+            Create Your First Project <FaIcon iconName="FaCode"/>
           </button>
         </motion.div>
       </section>
@@ -310,4 +396,4 @@ console.log(greet("Skynefh User"));
       <Footer />
     </div>
   );
-                }
+    }
