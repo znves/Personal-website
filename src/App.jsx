@@ -10,7 +10,7 @@ import {
   FaCode, FaFolderOpen, FaBug, FaArrowRight, FaCheckCircle 
 } from 'react-icons/fa';
 
-// --- DATA ICON MAPPING (Memastikan ikon dirender sebagai komponen) ---
+// --- DATA ICON MAPPING ---
 const IconMap = {
     FaLock, FaBolt, FaMagic, FaGlobe, FaUserSlash, FaRocket, 
     FaCode, FaFolderOpen, FaBug, FaArrowRight, FaCheckCircle
@@ -18,7 +18,6 @@ const IconMap = {
 
 const RenderFaIcon = ({ iconName, className = "text-sky-400" }) => {
     const IconComponent = IconMap[iconName];
-    // Pastikan IconComponent ada dan merupakan komponen yang valid
     if (!IconComponent) return null;
     return <IconComponent className={className} />;
 };
@@ -51,6 +50,7 @@ export default function App() {
     setProjectCount(count);
   }, []);
 
+  // FUNGSI INI MENGGUNAKAN navigate() YANG COMPATIBLE DENGAN main.js
   const createProject = () => {
     const nextId = projectCount + 1;
     const projects = JSON.parse(localStorage.getItem("sk_projects")) || [];
@@ -68,7 +68,8 @@ export default function App() {
     localStorage.setItem("sk_project_count", nextId.toString());
 
     setProjectCount(nextId);
-    navigate(`/myproject/${nextId}`);
+    // Navigasi ke rute Editor dengan ID proyek baru
+    navigate(`/myproject/${nextId}`); 
   };
 
   const FeatureCard = ({ title, description, icon, index }) => (
@@ -119,8 +120,7 @@ export default function App() {
     const duplicatedTestimonials = [...TestimonialsData, ...TestimonialsData];
     
     // Perhitungan lebar total yang harus digeser 
-    // (Lebar Card 350px + Gap/Space 32px) * Jumlah Card
-    const cardWidth = 350 + 32; 
+    const cardWidth = 350 + 32; // (Lebar Card 350px + Gap/Space 32px)
     const totalWidth = cardWidth * TestimonialsData.length; 
 
     return (
@@ -130,7 +130,7 @@ export default function App() {
           initial={{ x: 0 }}
           animate={{ x: `-${totalWidth}px` }} 
           transition={{
-            duration: 40, // Kecepatan lari: semakin besar, semakin lambat
+            duration: 40, 
             ease: "linear",
             repeat: Infinity,
             repeatType: "loop",
@@ -165,11 +165,11 @@ export default function App() {
 
   return (
     <div className="bg-black text-white overflow-x-hidden min-h-screen">
-      {/* Jika white screen, pastikan Navbar dan Footer tidak error */}
       <Navbar />
 
       {/* 1. HERO SECTION */}
       <section className="relative min-h-screen flex items-center pt-24 pb-12">
+        {/* ... (Konten Hero Section) ... */}
         <img
           src="https://images.unsplash.com/photo-1549490349-012b1d556554?q=80&w=2600&auto=format&fit=crop"
           alt="Abstract code background"
@@ -205,14 +205,14 @@ export default function App() {
               className="flex gap-4 flex-wrap pt-4"
             >
               <button
-                onClick={createProject}
+                onClick={createProject} // Navigasi ke /myproject/:id
                 className="px-8 py-4 rounded-full bg-sky-500 text-black font-bold text-md hover:bg-sky-400 hover:scale-[1.02] transition-transform shadow-lg shadow-sky-500/40 flex items-center space-x-2"
               >
                 <span>Start Coding Now</span> <RenderFaIcon iconName="FaArrowRight" className="text-black"/>
               </button>
 
               <button
-                onClick={() => navigate("/myproject")}
+                onClick={() => navigate("/myproject")} // Navigasi ke /myproject
                 className="px-8 py-4 rounded-full border border-white/20 text-white text-md hover:border-sky-400 hover:text-sky-400 transition-all duration-300"
               >
                 View My Projects
@@ -420,4 +420,4 @@ console.log('Fib(15):', result);
       <Footer />
     </div>
   );
-    }
+      }
