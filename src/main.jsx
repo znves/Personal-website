@@ -1,13 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import Router from "./router";
-import "./index.css";
+import { Routes, Route } from "react-router-dom";
+import App from "./App";
+import CreateProject from "./pages/CreateProject";
+import MyProjects from "./pages/MyProjects";
+import Editor from "./pages/Editor";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+export default function Router() {
+  return (
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/create" element={<CreateProject />} />
+      <Route path="/myproject" element={<MyProjects />} />
+      <Route path="/myproject/:id" element={<Editor />} />
+    </Routes>
+  );
+}
