@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "./components/Navbar";
@@ -98,7 +98,7 @@ export default function App() {
     { title: "Error Tracing", description: "Clear, helpful error output for easy debugging.", icon: "FaBug" },
   ];
 
-  // --- Komponen Running Testimonials ---
+  // --- Komponen Running Testimonials (Didefinisikan di dalam App agar Hooks berfungsi) ---
   const RunningTestimonials = () => {
     const scrollRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: scrollRef });
@@ -137,8 +137,8 @@ export default function App() {
     );
   };
   
-  // Impor useRef yang dibutuhkan untuk RunningTestimonials
-  const { useRef } = require("react"); 
+  // Catatan: RunningTestimonials harus didefinisikan di sini
+  // atau dipisah ke file terpisah dan diimpor (tapi melanggar syarat impor)
 
   return (
     <div className="bg-black text-white overflow-x-hidden min-h-screen">
@@ -396,4 +396,4 @@ console.log('Fib(15):', result);
       <Footer />
     </div>
   );
-    }
+                        }
