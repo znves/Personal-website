@@ -4,7 +4,6 @@ import { MdVerified } from "react-icons/md";
 
 export default function AboutMe() {
   const [loading, setLoading] = useState(false);
-
   const WEBHOOK_URL = "PASTE_DISCORD_WEBHOOK_DI_SINI";
 
   const sendMessage = async (e) => {
@@ -12,11 +11,6 @@ export default function AboutMe() {
     setLoading(true);
 
     const form = e.target;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-    };
 
     await fetch(WEBHOOK_URL, {
       method: "POST",
@@ -28,11 +22,10 @@ export default function AboutMe() {
             title: "📩 New Message",
             color: 3447003,
             fields: [
-              { name: "Name", value: data.name || "-", inline: false },
-              { name: "Email", value: data.email || "-", inline: false },
-              { name: "Message", value: data.message || "-", inline: false },
+              { name: "Name", value: form.name.value || "-" },
+              { name: "Email", value: form.email.value || "-" },
+              { name: "Message", value: form.message.value || "-" },
             ],
-            footer: { text: "AboutMe Page" },
           },
         ],
       }),
@@ -62,7 +55,14 @@ export default function AboutMe() {
           margin: 0 auto;
         }
 
-        /* PROFILE */
+        /* PROFILE CENTER */
+        .profile {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
         .profile-img {
           width: 110px;
           height: 110px;
@@ -87,7 +87,7 @@ export default function AboutMe() {
         .socials {
           margin-top: 12px;
           display: flex;
-          gap: 16px;
+          gap: 18px;
         }
 
         .socials a {
@@ -96,7 +96,7 @@ export default function AboutMe() {
           opacity: 0.8;
         }
 
-        /* ABOUT */
+        /* SECTIONS LEFT */
         .section {
           margin-top: 48px;
         }
@@ -113,7 +113,7 @@ export default function AboutMe() {
           opacity: 0.85;
         }
 
-        /* CONTACT CARD */
+        /* CONTACT */
         .contact-wrapper {
           display: flex;
           justify-content: center;
@@ -129,16 +129,11 @@ export default function AboutMe() {
           border: 1px solid #1f1f1f;
         }
 
-        .contact-card h3 {
-          margin-bottom: 14px;
-          font-size: 18px;
-        }
-
         .contact-card input,
         .contact-card textarea {
           width: 100%;
           margin-bottom: 12px;
-          padding: 10px 12px;
+          padding: 10px;
           background: #000;
           border: 1px solid #222;
           color: #fff;
@@ -153,15 +148,14 @@ export default function AboutMe() {
           color: #fff;
           font-weight: 600;
           border-radius: 8px;
-          cursor: pointer;
         }
 
         /* MARQUEE */
         .marquee-wrapper {
           position: relative;
           overflow: hidden;
-          margin-top: 20px;
           height: 80px;
+          margin-top: 20px;
         }
 
         .marquee-track {
@@ -186,7 +180,6 @@ export default function AboutMe() {
           width: 80px;
           height: 100%;
           pointer-events: none;
-          z-index: 2;
         }
 
         .shadow.left {
@@ -202,32 +195,32 @@ export default function AboutMe() {
 
       <div className="about-page">
         <div className="container">
-          {/* PROFILE */}
-          <img src="/profile.jpg" className="profile-img" />
-          <div className="name">
-            Aprilio <MdVerified className="verified" />
-          </div>
 
-          <div className="socials">
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaTiktok /></a>
-            <a href="#"><FaGithub /></a>
+          {/* PROFILE */}
+          <div className="profile">
+            <img src="/profile.jpg" className="profile-img" />
+            <div className="name">
+              Aprilio <MdVerified className="verified" />
+            </div>
+            <div className="socials">
+              <a href="#"><FaInstagram /></a>
+              <a href="#"><FaTiktok /></a>
+              <a href="#"><FaGithub /></a>
+            </div>
           </div>
 
           {/* ABOUT */}
           <div className="section">
             <h2>ABOUT ME</h2>
             <div className="about-text">
-              <strong>Aprilio</strong> adalah developer yang fokus
-              ke web modern, UI clean, dan produk digital yang
-              fungsional serta scalable.
+              <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
+              UI clean, dan produk digital yang fungsional.
             </div>
           </div>
 
           {/* CONTACT */}
           <div className="contact-wrapper">
             <form className="contact-card" onSubmit={sendMessage}>
-              <h3>Contact</h3>
               <input name="name" placeholder="Name" />
               <input name="email" placeholder="Email" />
               <textarea name="message" rows="4" placeholder="Message" />
@@ -255,6 +248,7 @@ export default function AboutMe() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </>
