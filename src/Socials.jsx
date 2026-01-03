@@ -1,16 +1,12 @@
-import {
-  FaDiscord,
-  FaGithub,
-  FaTiktok,
-  FaInstagram,
-  FaShareAlt,
-} from "react-icons/fa";
+import { FaDiscord, FaGithub, FaTiktok, FaInstagram, FaShareAlt } from "react-icons/fa";
 import Footer from "./Footer";
 
 export default function Contact() {
   return (
     <>
       <style>{`
+        * { box-sizing: border-box; }
+
         body {
           margin: 0;
           background: #000;
@@ -23,10 +19,19 @@ export default function Contact() {
           padding: 60px 16px 120px;
         }
 
+        /* CONTAINER (SAMA KAYA APP.JSX) */
+        .contact-container {
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 48px 28px;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 20px;
+        }
+
         /* HEADER */
         .contact-header {
           text-align: center;
-          margin-bottom: 36px;
+          margin-bottom: 40px;
         }
 
         .contact-header h1 {
@@ -95,7 +100,10 @@ export default function Contact() {
 
         .discord { background: #5865f2; }
         .github { background: #111; }
-        .tiktok { background: #000; border: 1px solid #25f4ee; }
+        .tiktok {
+          background: #000;
+          border: 1px solid #25f4ee;
+        }
         .instagram {
           background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
         }
@@ -118,72 +126,76 @@ export default function Contact() {
       `}</style>
 
       <div className="contact-page">
-        <div className="contact-header">
-          <h1>
-            <FaShareAlt /> Contact Me
-          </h1>
-          <div className="contact-line" />
-          <div className="contact-desc">
-            Feel free to reach out through any of these platforms
+        <div className="contact-container">
+          {/* HEADER */}
+          <div className="contact-header">
+            <h1>
+              <FaShareAlt /> Contact Me
+            </h1>
+            <div className="contact-line" />
+            <div className="contact-desc">
+              Feel free to reach out through any of these platforms
+            </div>
           </div>
-        </div>
 
-        <div className="contact-list">
-          <a
-            href="https://discord.com/users/995913592253710356"
-            target="_blank"
-            className="contact-card"
-          >
-            <div className="contact-icon discord">
-              <FaDiscord />
-            </div>
-            <div className="contact-text">
-              <strong>@vestionz</strong>
-              <span>Chat with me on Discord</span>
-            </div>
-          </a>
+          {/* CONTACT LIST */}
+          <div className="contact-list">
+            <a
+              href="https://discord.com/users/995913592253710356"
+              target="_blank"
+              className="contact-card"
+            >
+              <div className="contact-icon discord">
+                <FaDiscord />
+              </div>
+              <div className="contact-text">
+                <strong>@vestionz</strong>
+                <span>Chat with me on Discord</span>
+              </div>
+            </a>
 
-          <a
-            href="https://github.com/vestionz"
-            target="_blank"
-            className="contact-card"
-          >
-            <div className="contact-icon github">
-              <FaGithub />
-            </div>
-            <div className="contact-text">
-              <strong>@vestionz</strong>
-              <span>Check my Project on Github</span>
-            </div>
-          </a>
+            <a
+              href="https://github.com/vestionz"
+              target="_blank"
+              className="contact-card"
+            >
+              <div className="contact-icon github">
+                <FaGithub />
+              </div>
+              <div className="contact-text">
+                <strong>@vestionz</strong>
+                <span>Check my Project on Github</span>
+              </div>
+            </a>
 
-          <a
-            href="https://tiktok.com/@akbaraprilioo"
-            target="_blank"
-            className="contact-card"
-          >
-            <div className="contact-icon tiktok">
-              <FaTiktok />
-            </div>
-            <div className="contact-text">
-              <strong>@akbaraprilioo</strong>
-              <span>Follow me on Tiktok</span>
-            </div>
-          </a>
+            <a
+              href="https://tiktok.com/@akbaraprilioo"
+              target="_blank"
+              className="contact-card"
+            >
+              <div className="contact-icon tiktok">
+                <FaTiktok />
+              </div>
+              <div className="contact-text">
+                <strong>@akbaraprilioo</strong>
+                <span>Follow me on Tiktok</span>
+              </div>
+            </a>
 
-          <a
-            href="https://instagram.com/akbaraprilioo"
-            target="_blank"
-            className="contact-card"
-          >
-            <div className="contact-icon instagram">
-              <FaInstagram />
-            </div>
-            <div className="contact-text">
-              <strong>@akbaraprilioo</strong>
-              <span>Follow me on Instagram</span>
-            </div>
-          </a>
+            <a
+              href="https://instagram.com/akbaraprilioo"
+              target="_blank"
+              className="contact-card"
+            >
+              <div className="contact-icon instagram">
+                <FaInstagram />
+              </div>
+              <div className="contact-text">
+                <strong>@akbaraprilioo</strong>
+                <span>Follow me on Instagram</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
