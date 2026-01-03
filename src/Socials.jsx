@@ -130,6 +130,7 @@ export default function Contact() {
       `}</style>
 
       <Navbar />
+      
       <div className="contact-page">
         <div className="contact-container">
           {/* HEADER */}
