@@ -24,56 +24,6 @@ export default function AboutMe() {
           padding: 48px 32px;
         }
 
-        /* FOOTER DIVIDER */
-.footer-divider {
-  position: fixed;
-  bottom: 64px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(255,255,255,0.15);
-  z-index: 9;
-}
-
-/* FOOTER */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 64px;
-  background: rgba(0,0,0,0.92);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 10;
-}
-
-.footer-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  color: #aaa;
-  text-decoration: none;
-  font-size: 11px;
-}
-
-.footer-item svg {
-  font-size: 20px;
-}
-
-.footer-item.active {
-  color: #fff;
-}
-
-.footer-item.active svg {
-  background: #fff;
-  color: #000;
-  border-radius: 12px;
-  padding: 8px 14px;
-}
-
         /* PROFILE */
         .profile {
           display: flex;
