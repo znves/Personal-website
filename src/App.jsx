@@ -16,13 +16,11 @@ export default function AboutMe() {
           font-family: system-ui, sans-serif;
         }
 
-        /* MAIN BORDER CONTAINER */
+        /* MAIN CONTAINER (NO BORDER) */
         .container {
           max-width: 720px;
           margin: 0 auto;
           padding: 48px 32px;
-          border: 1px solid #1f1f1f;
-          border-radius: 16px;
         }
 
         /* PROFILE */
@@ -92,8 +90,15 @@ export default function AboutMe() {
         /* PERSONAL INFO */
         .personal-info {
           margin-top: 28px;
-          padding-left: 14px;
-          border-left: 2px solid #1d9bf0;
+        }
+
+        .personal-info h3 {
+          margin-bottom: 10px;
+        }
+
+        .personal-info ul {
+          padding-left: 16px;
+          margin: 0;
         }
 
         .personal-info li {
@@ -181,7 +186,7 @@ export default function AboutMe() {
             </div>
 
             <div className="personal-info">
-              <h3 style={{ marginBottom: "10px" }}>Personal Information</h3>
+              <h3>Personal Information</h3>
               <ul>
                 <li><strong>Name:</strong> Aprilio / Vestionz</li>
                 <li><strong>Region:</strong> Majalengka, Jawa Barat</li>
