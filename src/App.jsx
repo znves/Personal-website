@@ -196,7 +196,7 @@ export default function AboutMe() {
           </div>
 
           {/* PROJECT */}
-          <div className="project-section">
+          <div className="section">
             <h2>My Project</h2>
 
             <div className="marquee-wrapper">
