@@ -1,123 +1,192 @@
+import { useState } from "react";
 import { FaInstagram, FaTiktok, FaGithub } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 
 export default function AboutMe() {
+  const [loading, setLoading] = useState(false);
+
+  const WEBHOOK_URL = "PASTE_DISCORD_WEBHOOK_DI_SINI";
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const form = e.target;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
+
+    await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "AboutMe Contact",
+        embeds: [
+          {
+            title: "📩 New Message",
+            color: 3447003,
+            fields: [
+              { name: "Name", value: data.name || "-", inline: false },
+              { name: "Email", value: data.email || "-", inline: false },
+              { name: "Message", value: data.message || "-", inline: false },
+            ],
+            footer: { text: "AboutMe Page" },
+          },
+        ],
+      }),
+    });
+
+    form.reset();
+    setLoading(false);
+    alert("Message sent 🚀");
+  };
+
   return (
     <>
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
-
-        body {
-          margin: 0;
-        }
+        * { box-sizing: border-box }
+        body { margin: 0 }
 
         .about-page {
           min-height: 100vh;
           background: #000;
           color: #fff;
-          padding: 60px 20px;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+          padding: 60px 24px;
+          font-family: system-ui, sans-serif;
         }
 
-        .profile {
-          text-align: center;
+        .container {
+          max-width: 900px;
+          margin: 0 auto;
         }
 
+        /* PROFILE */
         .profile-img {
-          width: 120px;
-          height: 120px;
+          width: 110px;
+          height: 110px;
           border-radius: 50%;
           object-fit: cover;
-          margin-bottom: 16px;
+          margin-bottom: 14px;
         }
 
         .name {
-          font-size: 28px;
+          font-size: 26px;
           font-weight: 600;
           display: flex;
           align-items: center;
-          justify-content: center;
           gap: 6px;
         }
 
         .verified {
           color: #1d9bf0;
-          font-size: 22px;
+          font-size: 20px;
         }
 
         .socials {
-          margin-top: 14px;
+          margin-top: 12px;
           display: flex;
-          justify-content: center;
-          gap: 18px;
+          gap: 16px;
         }
 
         .socials a {
           color: #fff;
           font-size: 22px;
           opacity: 0.8;
-          transition: 0.2s;
         }
 
-        .socials a:hover {
-          opacity: 1;
-          transform: translateY(-2px);
+        /* ABOUT */
+        .section {
+          margin-top: 48px;
+        }
+
+        .section h2 {
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 10px;
+          letter-spacing: 1px;
         }
 
         .about-text {
-          max-width: 600px;
-          margin: 40px auto 80px;
-          text-align: center;
           line-height: 1.7;
-          opacity: 0.9;
+          opacity: 0.85;
+        }
+
+        /* CONTACT CARD */
+        .contact-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+        }
+
+        .contact-card {
+          width: 100%;
+          max-width: 420px;
+          background: #0d0d0d;
+          padding: 24px;
+          border-radius: 14px;
+          border: 1px solid #1f1f1f;
+        }
+
+        .contact-card h3 {
+          margin-bottom: 14px;
+          font-size: 18px;
+        }
+
+        .contact-card input,
+        .contact-card textarea {
+          width: 100%;
+          margin-bottom: 12px;
+          padding: 10px 12px;
+          background: #000;
+          border: 1px solid #222;
+          color: #fff;
+          border-radius: 8px;
+        }
+
+        .contact-card button {
+          width: 100%;
+          padding: 10px;
+          background: #1d9bf0;
+          border: none;
+          color: #fff;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
         }
 
         /* MARQUEE */
         .marquee-wrapper {
           position: relative;
           overflow: hidden;
-          width: 100%;
-          height: 90px;
-        }
-
-        .marquee {
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
+          margin-top: 20px;
+          height: 80px;
         }
 
         .marquee-track {
           display: flex;
-          align-items: center;
           width: max-content;
-          animation: marquee 20s linear infinite;
+          animation: run 20s linear infinite;
         }
 
         .marquee-track img {
-          height: 48px;
+          height: 44px;
           margin: 0 40px;
-          opacity: 0.9;
         }
 
-        @keyframes marquee {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
+        @keyframes run {
+          from { transform: translateX(0) }
+          to { transform: translateX(-50%) }
         }
 
-        /* SHADOW */
         .shadow {
           position: absolute;
           top: 0;
           width: 80px;
           height: 100%;
-          z-index: 2;
           pointer-events: none;
+          z-index: 2;
         }
 
         .shadow.left {
@@ -132,14 +201,9 @@ export default function AboutMe() {
       `}</style>
 
       <div className="about-page">
-        {/* PROFILE */}
-        <div className="profile">
-          <img
-            src="/profile.jpg"
-            alt="Profile"
-            className="profile-img"
-          />
-
+        <div className="container">
+          {/* PROFILE */}
+          <img src="/profile.jpg" className="profile-img" />
           <div className="name">
             Aprilio <MdVerified className="verified" />
           </div>
@@ -149,30 +213,46 @@ export default function AboutMe() {
             <a href="#"><FaTiktok /></a>
             <a href="#"><FaGithub /></a>
           </div>
-        </div>
 
-        {/* ABOUT ME */}
-        <div className="about-text">
-          Aku adalah developer yang fokus ke web modern, UI/UX,
-          dan eksperimen produk digital. Suka bikin sesuatu yang
-          simpel, clean, tapi tetap impactful.
-        </div>
+          {/* ABOUT */}
+          <div className="section">
+            <h2>ABOUT ME</h2>
+            <div className="about-text">
+              <strong>Aprilio</strong> adalah developer yang fokus
+              ke web modern, UI clean, dan produk digital yang
+              fungsional serta scalable.
+            </div>
+          </div>
 
-        {/* RUNNING LOGO */}
-        <div className="marquee-wrapper">
-          <div className="shadow left" />
-          <div className="shadow right" />
+          {/* CONTACT */}
+          <div className="contact-wrapper">
+            <form className="contact-card" onSubmit={sendMessage}>
+              <h3>Contact</h3>
+              <input name="name" placeholder="Name" />
+              <input name="email" placeholder="Email" />
+              <textarea name="message" rows="4" placeholder="Message" />
+              <button disabled={loading}>
+                {loading ? "Sending..." : "Send"}
+              </button>
+            </form>
+          </div>
 
-          <div className="marquee">
-            <div className="marquee-track">
-              <img src="/logo1.png" />
-              <img src="/logo2.png" />
-              <img src="/logo3.png" />
+          {/* PROJECT */}
+          <div className="section">
+            <h2>My Project</h2>
 
-              {/* duplikat supaya infinite */}
-              <img src="/logo1.png" />
-              <img src="/logo2.png" />
-              <img src="/logo3.png" />
+            <div className="marquee-wrapper">
+              <div className="shadow left" />
+              <div className="shadow right" />
+
+              <div className="marquee-track">
+                <img src="/logo1.png" />
+                <img src="/logo2.png" />
+                <img src="/logo3.png" />
+                <img src="/logo1.png" />
+                <img src="/logo2.png" />
+                <img src="/logo3.png" />
+              </div>
             </div>
           </div>
         </div>
