@@ -186,7 +186,7 @@ export default function AboutMe() {
             </div>
 
             <div className="section">
-              <h3>Personal Information</h3>
+              <h2>Personal Information</h2>
               <ul>
                 <li><strong>Name:</strong> Aprilio / Vestionz</li>
                 <li><strong>Region:</strong> Majalengka, Jawa Barat</li>
