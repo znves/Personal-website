@@ -24,7 +24,7 @@ export default function Stats() {
         }
 
         .nf-box {
-          max-width: 420px;
+          max-width: 300px;
         }
 
         .nf-code {
