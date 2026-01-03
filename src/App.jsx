@@ -191,8 +191,7 @@ export default function AboutMe() {
           <div className="section">
             <h2>About Me</h2>
             <div className="about-text">
-              <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
-              UI clean, dan produk digital yang fungsional serta scalable.
+              Hi! I'm <strong>Aprilio</strong>, a high school student. My hobbies include playing games, sleeping, reading novels, exercising, and listening to music. I enjoy learning new things, meeting new people, trying challenging experiences, and creating cool stuff. Every day, I strive to grow, have fun, and enjoy the process.
             </div>
 
             {/* PERSONAL INFORMATION */}
