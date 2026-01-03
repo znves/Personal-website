@@ -1,209 +1,174 @@
-import { FaDiscord, FaGithub, FaTiktok, FaInstagram, FaShareAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { MdVerified } from "react-icons/md";
+import { FaGithub, FaStar, FaUserFriends, FaBook } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-export default function Contact() {
+export default function GitHubStats() {
+  const username = "vestionz"; // RENAME USERNAME GITHUB
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${username}`)
+      .then((res) => res.json())
+      .then(setData)
+      .catch(console.error);
+  }, []);
+
+  if (!data) return null;
+
   return (
     <>
       <style>{`
-        * { box-sizing: border-box; }
-
-        body {
-          margin: 0;
-          background: #000;
-          color: #fff;
-          font-family: system-ui, sans-serif;
+        .gh-wrapper {
+          max-width: 720px;
+          margin: 0 auto 60px;
+          padding: 28px;
+          border-radius: 24px;
+          background: rgba(255,255,255,0.015);
+          border: 1px solid rgba(255,255,255,0.06);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.6);
         }
 
-        .contact-page {
-          min-height: 100vh;
-          padding: 60px 16px 120px;
-        }
-
-        .contact-container {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 10px 28px;
-        background: rgba(255,255,255,0.015); /* super halus */
-        border-radius: 22px;
-        box-shadow:
-        0 0 0 1px rgba(255,255,255,0.02),
-        0 20px 60px rgba(0,0,0,0.6);
-        }
-
-
-        /* HEADER */
-        .contact-header {
+        .gh-header {
           text-align: center;
-          margin-bottom: 40px;
+          margin-bottom: 28px;
         }
 
-        .contact-header h1 {
+        .gh-title {
+          font-size: 26px;
+          font-weight: 700;
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 10px;
-          font-size: 28px;
-          font-weight: 700;
-          color: #d4af37; /* GOLD */
         }
 
-        .contact-line {
-          width: 80px;
-          height: 4px;
-          background: #d4af37;
-          margin: 14px auto 0;
-          border-radius: 4px;
+        .gh-sub {
+          margin-top: 10px;
+          font-size: 14px;
+          opacity: 0.8;
         }
 
-        .contact-desc {
-          margin-top: 16px;
-          font-size: 15px;
-          opacity: 0.85;
-          line-height: 1.6;
+        .gh-profile {
+          text-align: center;
+          margin-top: 30px;
         }
 
-        /* LIST */
-        .contact-list {
-          max-width: 520px;
-          margin: 48px auto 0;
+        .gh-avatar {
+          width: 96px;
+          height: 96px;
+          border-radius: 50%;
+          margin-bottom: 14px;
+        }
+
+        .gh-name {
           display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .contact-card {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 16px 18px;
-          border-radius: 18px;
-          background: #050505;
-          border: 1px solid rgba(255,255,255,0.08);
-          text-decoration: none;
-          color: #fff;
-          transition: 0.25s ease;
-        }
-
-        .contact-card:hover {
-          transform: translateY(-2px);
-          border-color: rgba(212,175,55,0.6);
-        }
-
-        .contact-icon {
-          width: 46px;
-          height: 46px;
-          border-radius: 14px;
-          display: flex;
-          align-items: center;
           justify-content: center;
-          font-size: 22px;
-          color: #fff;
-          flex-shrink: 0;
-        }
-
-        .discord { background: #5865f2; }
-        .github { background: #111; }
-        .tiktok {
-          background: #000;
-          border: 1px solid #25f4ee;
-        }
-        .instagram {
-          background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
-        }
-
-        .contact-text {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .contact-text strong {
-          font-size: 15px;
+          align-items: center;
+          gap: 6px;
+          font-size: 20px;
           font-weight: 600;
         }
 
-        .contact-text span {
-          font-size: 13px;
-          opacity: 0.8;
+        .verified {
+          color: #1da1f2;
+          font-size: 18px;
+        }
+
+        .gh-username {
+          font-size: 14px;
+          opacity: 0.7;
           margin-top: 2px;
+        }
+
+        .gh-stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 14px;
+          margin-top: 30px;
+        }
+
+        .stat-card {
+          background: #050505;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 16px;
+          padding: 16px 10px;
+          text-align: center;
+        }
+
+        .stat-icon {
+          font-size: 20px;
+          margin-bottom: 6px;
+        }
+
+        .stat-value {
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+        .stat-label {
+          font-size: 12px;
+          opacity: 0.75;
+          margin-top: 2px;
+        }
+
+        @media (max-width: 640px) {
+          .gh-stats {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
       `}</style>
 
       <Navbar />
       
-      <div className="contact-page">
-        <div className="contact-container">
-        
-          <div className="contact-header">
-            <h1>
-              <FaShareAlt /> Contact Me
-            </h1>
-            <div className="contact-line" />
-            <div className="contact-desc">
-              Feel free to reach out through any of these platforms
-            </div>
+      <div className="gh-wrapper">
+        <div className="gh-header">
+          <div className="gh-title">
+            <FaGithub /> GitHub Stats
+          </div>
+          <div className="gh-sub">
+            Statistics and information from my GitHub profile
+          </div>
+        </div>
+
+        <div className="gh-profile">
+          <img src={data.avatar_url} alt="avatar" className="gh-avatar" />
+
+          <div className="gh-name">
+            {data.name || data.login}
+            <MdVerified className="verified" />
           </div>
 
-          <div className="contact-list">
-            <a
-              href="https://discord.com/users/995913592253710356"
-              target="_blank"
-              className="contact-card"
-            >
-              <div className="contact-icon discord">
-                <FaDiscord />
-              </div>
-              <div className="contact-text">
-                <strong>@vestionz</strong>
-                <span>Chat with me on Discord</span>
-              </div>
-            </a>
+          <div className="gh-username">@{data.login}</div>
+        </div>
 
-            <a
-              href="https://github.com/vestionz"
-              target="_blank"
-              className="contact-card"
-            >
-              <div className="contact-icon github">
-                <FaGithub />
-              </div>
-              <div className="contact-text">
-                <strong>@vestionz</strong>
-                <span>Check my Project on Github</span>
-              </div>
-            </a>
+        <div className="gh-stats">
+          <div className="stat-card">
+            <FaUserFriends className="stat-icon" />
+            <div className="stat-value">{data.followers}</div>
+            <div className="stat-label">Followers</div>
+          </div>
 
-            <a
-              href="https://tiktok.com/@akbaraprilioo"
-              target="_blank"
-              className="contact-card"
-            >
-              <div className="contact-icon tiktok">
-                <FaTiktok />
-              </div>
-              <div className="contact-text">
-                <strong>@akbaraprilioo</strong>
-                <span>Follow me on Tiktok</span>
-              </div>
-            </a>
+          <div className="stat-card">
+            <FaUserFriends className="stat-icon" />
+            <div className="stat-value">{data.following}</div>
+            <div className="stat-label">Following</div>
+          </div>
 
-            <a
-              href="https://instagram.com/akbaraprilioo"
-              target="_blank"
-              className="contact-card"
-            >
-              <div className="contact-icon instagram">
-                <FaInstagram />
-              </div>
-              <div className="contact-text">
-                <strong>@akbaraprilioo</strong>
-                <span>Follow me on Instagram</span>
-              </div>
-            </a>
+          <div className="stat-card">
+            <FaBook className="stat-icon" />
+            <div className="stat-value">{data.public_repos}</div>
+            <div className="stat-label">Repositories</div>
+          </div>
+
+          <div className="stat-card">
+            <FaStar className="stat-icon" />
+            <div className="stat-value">{data.public_gists}</div>
+            <div className="stat-label">Starred</div>
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );
