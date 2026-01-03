@@ -8,6 +8,7 @@
 
 Personal website showcasing my projects, portfolio, and tech skills. Built with modern web technologies.
 
+<img src="/public/image.png" width="450" alt="Image Logo" />
 </div>
 
 ---
