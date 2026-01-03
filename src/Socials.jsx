@@ -1,4 +1,10 @@
-import { FaDiscord, FaGithub, FaTiktok, FaInstagram, FaShareAlt } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaGithub,
+  FaTiktok,
+  FaInstagram,
+  FaShareAlt
+} from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
@@ -15,61 +21,62 @@ export default function Contact() {
           font-family: system-ui, sans-serif;
         }
 
+        /* SAMA SEPERTI STATS.JSX */
         .contact-page {
           min-height: 100vh;
-          padding: 60px 16px 120px;
+          padding: 10px 16px 120px;
         }
 
         .contact-container {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 10px 28px;
-        background: rgba(255,255,255,0.015); /* super halus */
-        border-radius: 22px;
-        box-shadow:
-        0 0 0 1px rgba(255,255,255,0.02),
-        0 20px 60px rgba(0,0,0,0.6);
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 14px 22px;
+          background: rgba(255,255,255,0.015);
+          border-radius: 22px;
+          box-shadow:
+            0 0 0 1px rgba(255,255,255,0.02),
+            0 20px 60px rgba(0,0,0,0.6);
         }
-
 
         /* HEADER */
         .contact-header {
           text-align: center;
-          margin-bottom: 40px;
+          margin-top: 8px; /* INI KUNCI JARAK NAVBAR */
+          margin-bottom: 36px;
         }
 
         .contact-header h1 {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 10px;
-          font-size: 28px;
-          font-weight: 700;
-          color: #d4af37; /* GOLD */
+          gap: 8px;
+          font-size: 24px;
+          font-weight: 600;
+          color: #3b82f6; /* BIRU */
         }
 
         .contact-line {
-          width: 80px;
-          height: 4px;
-          background: #d4af37;
-          margin: 14px auto 0;
-          border-radius: 4px;
+          width: 50px;
+          height: 3px;
+          background: #3b82f6;
+          margin: 10px auto 0;
+          border-radius: 10px;
         }
 
         .contact-desc {
-          margin-top: 16px;
-          font-size: 15px;
-          opacity: 0.85;
+          margin-top: 12px;
+          font-size: 14px;
+          opacity: 0.75;
           line-height: 1.6;
         }
 
         /* LIST */
         .contact-list {
           max-width: 520px;
-          margin: 48px auto 0;
+          margin: 42px auto 0;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
         }
 
         .contact-card {
@@ -87,7 +94,7 @@ export default function Contact() {
 
         .contact-card:hover {
           transform: translateY(-2px);
-          border-color: rgba(212,175,55,0.6);
+          border-color: rgba(59,130,246,0.6); /* BIRU */
         }
 
         .contact-icon {
@@ -130,10 +137,9 @@ export default function Contact() {
       `}</style>
 
       <Navbar />
-      
+
       <div className="contact-page">
         <div className="contact-container">
-        
           <div className="contact-header">
             <h1>
               <FaShareAlt /> Contact Me
@@ -148,6 +154,7 @@ export default function Contact() {
             <a
               href="https://discord.com/users/995913592253710356"
               target="_blank"
+              rel="noreferrer"
               className="contact-card"
             >
               <div className="contact-icon discord">
@@ -162,6 +169,7 @@ export default function Contact() {
             <a
               href="https://github.com/vestionz"
               target="_blank"
+              rel="noreferrer"
               className="contact-card"
             >
               <div className="contact-icon github">
@@ -176,6 +184,7 @@ export default function Contact() {
             <a
               href="https://tiktok.com/@akbaraprilioo"
               target="_blank"
+              rel="noreferrer"
               className="contact-card"
             >
               <div className="contact-icon tiktok">
@@ -190,6 +199,7 @@ export default function Contact() {
             <a
               href="https://instagram.com/akbaraprilioo"
               target="_blank"
+              rel="noreferrer"
               className="contact-card"
             >
               <div className="contact-icon instagram">
