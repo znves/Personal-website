@@ -66,7 +66,7 @@ export default function Footer() {
       <footer className="footer">
         <a
           href="/socials"
-          className={`footer-item ${path === "/project" ? "active" : ""}`}
+          className={`footer-item ${path === "/socials" ? "active" : ""}`}
         >
           <FaUsers />
           <span>Socials</span>
