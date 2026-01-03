@@ -18,7 +18,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 export default function GitHubStats() {
-  const username = "vestionz";
+  const username = "vestionz"; // USERNAME GITHUB
   const [profile, setProfile] = useState(null);
   const [repos, setRepos] = useState([]);
 
