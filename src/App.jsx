@@ -1,6 +1,7 @@
 import { FaInstagram, FaTiktok, FaGithub } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import { FaFolderOpen, FaUser, FaChartBar } from "react-icons/fa";
+import Footer from "./Footer";
 
 export default function AboutMe() {
   return (
@@ -292,25 +293,7 @@ export default function AboutMe() {
             </div>
           </div>
 
-          {/* FOOTER DIVIDER */}
-<div className="footer-divider" />
-
-<footer className="footer">
-  <a href="/project" className="footer-item">
-    <FaFolderOpen />
-    <span>Project</span>
-  </a>
-
-  <a href="/profile" className="footer-item">
-    <FaUser />
-    <span>Profile</span>
-  </a>
-
-  <a href="/stats" className="footer-item active">
-    <FaChartBar />
-    <span>Stats</span>
-  </a>
-</footer>
+          <Footer />
 
         </div>
       </div>
