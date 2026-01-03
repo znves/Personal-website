@@ -18,7 +18,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 export default function GitHubStats() {
-  const username = "vestionz"; // CHANGE USERNAME
+  const username = "vestionz";
   const [profile, setProfile] = useState(null);
   const [repos, setRepos] = useState([]);
 
@@ -40,11 +40,12 @@ export default function GitHubStats() {
         body {
           background: #000;
           color: #fff;
+          font-size: 15px;
         }
 
         .github-page {
           min-height: 100vh;
-          padding: 5px 15px 120px;
+          padding: 10px 15px 120px;
         }
 
         .github-container {
@@ -52,39 +53,39 @@ export default function GitHubStats() {
           margin: 0 auto;
         }
 
-        /* TITLE (NO BIG GAP ANYMORE) */
+        /* TITLE */
         .github-title {
           text-align: center;
-          font-size: 22px;
+          font-size: 24px;
           font-weight: 600;
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 8px;
-          margin-top: 10px;
+          margin-top: 8px;
         }
 
         .github-line {
-          width: 48px;
+          width: 50px;
           height: 3px;
           background: #3b82f6;
-          margin: 8px auto;
+          margin: 10px auto;
           border-radius: 10px;
         }
 
         .github-sub {
           text-align: center;
-          font-size: 12px;
+          font-size: 14px;
           opacity: 0.7;
-          max-width: 300px;
-          margin: 0 auto 18px;
+          max-width: 360px;
+          margin: 0 auto 20px;
         }
 
-        /* MAIN CARD */
+        /* CARD */
         .github-card {
           background: #050505;
           border-radius: 20px;
-          padding: 20px 16px;
+          padding: 22px 18px;
           border: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -93,8 +94,8 @@ export default function GitHubStats() {
         }
 
         .avatar {
-          width: 72px;
-          height: 72px;
+          width: 78px;
+          height: 78px;
           border-radius: 50%;
           margin-bottom: 10px;
         }
@@ -103,29 +104,29 @@ export default function GitHubStats() {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 5px;
-          font-size: 16px;
+          gap: 6px;
+          font-size: 18px;
           font-weight: 600;
         }
 
         .verified {
           color: #3b82f6;
-          font-size: 14px;
+          font-size: 16px;
         }
 
         .username {
-          font-size: 12px;
+          font-size: 14px;
           opacity: 0.65;
-          margin-top: 2px;
+          margin-top: 3px;
         }
 
         .info {
           display: flex;
           justify-content: center;
-          gap: 10px;
+          gap: 12px;
           margin-top: 6px;
-          font-size: 11px;
-          opacity: 0.65;
+          font-size: 14px;
+          opacity: 0.7;
         }
 
         .info a {
@@ -134,44 +135,44 @@ export default function GitHubStats() {
 
         /* STATS */
         .stats {
-          margin-top: 18px;
+          margin-top: 20px;
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 10px;
+          gap: 12px;
         }
 
         .stat {
           background: #000;
-          border-radius: 12px;
-          padding: 12px 6px;
+          border-radius: 14px;
+          padding: 14px 8px;
           text-align: center;
           border: 1px solid rgba(255,255,255,0.08);
         }
 
         .stat-icon {
-          font-size: 14px;
-          margin-bottom: 4px;
+          font-size: 18px;
+          margin-bottom: 6px;
         }
 
         .stat-value {
-          font-size: 14px;
+          font-size: 18px;
           font-weight: 600;
         }
 
         .stat-label {
-          font-size: 10px;
+          font-size: 14px;
           opacity: 0.65;
         }
 
         /* REPOS */
         .repo-section {
-          margin-top: 20px;
+          margin-top: 24px;
         }
 
         .repo-title {
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 600;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
           display: flex;
           align-items: center;
           gap: 6px;
@@ -180,13 +181,13 @@ export default function GitHubStats() {
         .repo-list {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 10px;
         }
 
         .repo-card {
           background: #000;
           border-radius: 14px;
-          padding: 12px 14px;
+          padding: 14px 16px;
           border: 1px solid rgba(255,255,255,0.08);
           text-decoration: none;
           color: #fff;
@@ -195,34 +196,34 @@ export default function GitHubStats() {
         .repo-meta {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
-          font-size: 10px;
-          opacity: 0.65;
+          gap: 10px;
+          font-size: 13px;
+          opacity: 0.7;
           margin-bottom: 6px;
         }
 
         .repo-meta span {
           display: flex;
           align-items: center;
-          gap: 3px;
+          gap: 4px;
         }
 
         .repo-name {
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 600;
         }
 
         .repo-desc {
-          font-size: 11px;
-          opacity: 0.65;
-          margin-top: 3px;
+          font-size: 14px;
+          opacity: 0.7;
+          margin-top: 4px;
         }
 
         .repo-empty {
-          font-size: 12px;
+          font-size: 14px;
           opacity: 0.6;
           text-align: center;
-          padding: 14px 0;
+          padding: 16px 0;
         }
 
         @media (max-width: 520px) {
