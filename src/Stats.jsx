@@ -71,9 +71,9 @@ export default function Stats() {
       <div className="notfound">
         <div className="nf-box">
           <div className="nf-code">Coming Soon</div>
-          <div className="nf-title">Oops…</div>
+          <div className="nf-title">Sorry...</div>
           <div className="nf-desc">
-            This website will be available very soon.
+            This page will be available very soon.
           </div>
 
           <Footer />
