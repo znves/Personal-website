@@ -22,7 +22,7 @@ export default function AboutMe() {
         .container {
           max-width: 720px;
           margin: 0 auto;
-          padding: 48px 32px;
+          padding: 10px 28px;
         }
 
         /* PROFILE */
