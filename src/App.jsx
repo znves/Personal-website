@@ -1,6 +1,6 @@
-import { FaInstagram, FaTiktok, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaTiktok, FaGithub, FaDiscord} from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
-import { FaFolderOpen, FaUser, FaChartBar } from "react-icons/fa";
+import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 import Footer from "./Footer";
 
 export default function AboutMe() {
@@ -177,9 +177,10 @@ export default function AboutMe() {
               Aprilio <MdVerified className="verified" />
             </div>
             <div className="socials">
-              <a href="#"><FaInstagram /></a>
-              <a href="#"><FaTiktok /></a>
-              <a href="#"><FaGithub /></a>
+              <a href="https://Instagram.com/akbaraprilioo"><FaInstagram /></a>
+              <a href="https://tiktok.com/@akbaraprilioo"><FaTiktok /></a>
+              <a href="https://github.com/vestionz"><FaGithub /></a>
+              <a href="https://discord.com/users/995913592253710356"><FaDiscord /></a>
             </div>
           </div>
 
