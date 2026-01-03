@@ -85,11 +85,27 @@ export default function AboutMe() {
           opacity: 0.9;
         }
 
+        /* PERSONAL INFO */
+        .personal-info {
+          margin-top: 24px;
+        }
+
+        .personal-info ul {
+          padding-left: 16px;
+          margin: 0;
+        }
+
+        .personal-info li {
+          margin-bottom: 6px;
+          opacity: 0.9;
+        }
+
         /* PROJECT */
         .marquee-wrapper {
           position: relative;
           overflow: hidden;
           height: 100px;
+          margin-top: 16px;
         }
 
         .marquee-track {
@@ -121,8 +137,7 @@ export default function AboutMe() {
           font-size: 12px;
           color: #fff;
           opacity: 0.85;
-          text-decoration: none;
-          pointer-events: none; /* ⛔ biar ga bisa diklik */
+          pointer-events: none;
         }
 
         @keyframes run {
@@ -173,6 +188,16 @@ export default function AboutMe() {
               <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
               UI clean, dan produk digital yang fungsional serta scalable.
             </div>
+
+            {/* PERSONAL INFORMATION */}
+            <div className="personal-info">
+              <h2>Personal Information</h2>
+              <ul>
+                <li><strong>Name:</strong> Aprilio / Vestionz</li>
+                <li><strong>Region:</strong> Majalengka, Jawa Barat</li>
+                <li><strong>Favorite Food:</strong> Mie Ayam, Ayam Geprek</li>
+              </ul>
+            </div>
           </div>
 
           {/* PROJECT */}
@@ -198,7 +223,7 @@ export default function AboutMe() {
                   </div>
                 ))}
 
-                {/* DUPLIKAT BIAR INFINITE */}
+                {/* DUPLIKAT BIAR JALAN TERUS */}
                 {[
                   { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.com" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
