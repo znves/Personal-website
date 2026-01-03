@@ -21,7 +21,6 @@ export default function Contact() {
           font-family: system-ui, sans-serif;
         }
 
-        /* SAMA SEPERTI STATS.JSX */
         .contact-page {
           min-height: 100vh;
           padding: 10px 16px 120px;
@@ -38,7 +37,6 @@ export default function Contact() {
             0 20px 60px rgba(0,0,0,0.6);
         }
 
-        /* HEADER */
         .contact-header {
           text-align: center;
           margin-top: 8px; /* INI KUNCI JARAK NAVBAR */
@@ -70,7 +68,6 @@ export default function Contact() {
           line-height: 1.6;
         }
 
-        /* LIST */
         .contact-list {
           max-width: 520px;
           margin: 42px auto 0;
