@@ -199,7 +199,7 @@ export default function AboutMe() {
               <h2>Personal Information</h2>
               <ul>
                 <li><strong>Name           :</strong>  Aprilio / Vestionz</li>
-                <li><strong>Region         :</strong>  Jawa Barat</li>
+                <li><strong>Region         :</strong>  West Java, Indonesia</li>
                 <li><strong>Favorite Food  :</strong>  Ayam Geprek</li>
               </ul>
             </div>
