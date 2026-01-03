@@ -19,14 +19,17 @@ export default function Contact() {
           padding: 60px 16px 120px;
         }
 
-        /* CONTAINER (SAMA KAYA APP.JSX) */
         .contact-container {
-          max-width: 720px;
-          margin: 0 auto;
-          padding: 48px 28px;
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 20px;
-        }
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 28px;
+  background: rgba(255,255,255,0.015); /* super halus */
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.02),
+    0 20px 60px rgba(0,0,0,0.6);
+}
+
 
         /* HEADER */
         .contact-header {
