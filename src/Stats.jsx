@@ -20,11 +20,11 @@ export default function Stats() {
           align-items: center;
           justify-content: center;
           text-align: center;
-          padding: 24px;
+          padding: 5px;
         }
 
         .nf-box {
-          max-width: 300px;
+          max-width: 436px;
         }
 
         .nf-code {
