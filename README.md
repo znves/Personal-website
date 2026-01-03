@@ -6,22 +6,22 @@
 
 # Personal Website
 
-A modern portfolio website showcasing your profile, tech stack, GitHub projects, GitHub statistics (repositories, followers, starred, etc.), personal blog, and various social contacts. Built with Next.js, Tailwind CSS, and TypeScript, this portfolio is directly integrated with GitHub data and displays information dynamically.
+Personal website showcasing my projects, portfolio, and tech skills. Built with modern web technologies.
 
 </div>
 
 ---
 
-## Demo
+## 📡 Demo
 
 > [Live Demo (Website)](https://aprilio.my.id)
 
-## Deployment
+## ⚒️ Deployment
 
 Deployment on Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvestionz%2FPersonal-website)
 
-## License
+## ⚖️ License
 
 This project is open-sourced under the MIT License - see the [LICENSE](LICENSE) file for details.
