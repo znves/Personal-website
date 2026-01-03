@@ -195,7 +195,7 @@ export default function AboutMe() {
               <ul>
                 <li><strong>Name:</strong> Aprilio / Vestionz</li>
                 <li><strong>Region:</strong> Majalengka, Jawa Barat</li>
-                <li><strong>Favorite Food:</strong> Mie Ayam, Ayam Geprek</li>
+                <li><strong>Favorite Food:</strong> Ayam Geprek</li>
               </ul>
             </div>
           </div>
