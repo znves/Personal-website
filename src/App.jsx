@@ -179,13 +179,13 @@ export default function AboutMe() {
 
           {/* ABOUT */}
           <div className="section">
-            <h2>ABOUT ME</h2>
+            <h2>About Me</h2>
             <div className="about-text">
               <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
               UI clean, dan produk digital yang fungsional serta scalable.
             </div>
 
-            <div className="personal-info">
+            <div className="section">
               <h3>Personal Information</h3>
               <ul>
                 <li><strong>Name:</strong> Aprilio / Vestionz</li>
