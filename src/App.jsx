@@ -212,10 +212,10 @@ export default function AboutMe() {
 
               <div className="marquee-track">
                 {[
-                  { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.com" },
+                  { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.my.id" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
-                  { name: "Rhinzan", img: "/rhinzan.webp", link: "#" },
-                  { name: "WIW", img: "/wiw.webp", link: "#" },
+                  { name: "Rhinzan", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
+                  { name: "WIW", img: "/wiw.webp", link: "https://wiw.my.id" },
                 ].map((p, i) => (
                   <div className="project-item" key={i}>
                     <a href={p.link} target="_blank">
@@ -227,10 +227,10 @@ export default function AboutMe() {
 
                 {/* DUPLIKAT BIAR JALAN TERUS */}
                 {[
-                  { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.com" },
+                  { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.my.id" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
-                  { name: "Rhinzan", img: "/rhinzan.webp", link: "#" },
-                  { name: "WIW", img: "/wiw.webp", link: "#" },
+                  { name: "Rhinzan", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
+                  { name: "WIW", img: "/wiw.webp", link: "https://wiw.my.id" },
                 ].map((p, i) => (
                   <div className="project-item" key={`dup-${i}`}>
                     <a href={p.link} target="_blank">
