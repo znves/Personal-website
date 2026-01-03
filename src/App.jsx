@@ -215,8 +215,8 @@ export default function AboutMe() {
                 {[
                   { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.my.id" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
-                  { name: "Rhinzan", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
-                  { name: "WIW", img: "/wiw.webp", link: "https://wiw.my.id" },
+                  { name: "Rhinzan Bot", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
+                  { name: "WIW-Digital", img: "/wiw.webp", link: "https://wiw.my.id" },
                 ].map((p, i) => (
                   <div className="project-item" key={i}>
                     <a href={p.link} target="_blank">
@@ -230,8 +230,8 @@ export default function AboutMe() {
                 {[
                   { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.my.id" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
-                  { name: "Rhinzan", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
-                  { name: "WIW", img: "/wiw.webp", link: "https://wiw.my.id" },
+                  { name: "Rhinzan Bot", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
+                  { name: "WIW-Digital", img: "/wiw.webp", link: "https://wiw.my.id" },
                 ].map((p, i) => (
                   <div className="project-item" key={`dup-${i}`}>
                     <a href={p.link} target="_blank">
