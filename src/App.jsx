@@ -1,57 +1,7 @@
-import { useState } from "react";
 import { FaInstagram, FaTiktok, FaGithub } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 
 export default function AboutMe() {
-  const [loading, setLoading] = useState(false);
-
-  const WEBHOOK_URL = "PASTE_DISCORD_WEBHOOK_DI_SINI";
-
-  const sendMessage = async (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    if (!name || !email || !message) {
-      alert("Semua field wajib diisi");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: "AboutMe Contact",
-          embeds: [
-            {
-              title: "📩 New Contact Message",
-              color: 3447003,
-              fields: [
-                { name: "Name", value: name },
-                { name: "Email", value: email },
-                { name: "Message", value: message },
-              ],
-              footer: { text: "AboutMe Page" },
-            },
-          ],
-        }),
-      });
-
-      form.reset();
-      alert("Message sent 🚀");
-    } catch (err) {
-      alert("Failed to send message");
-    }
-
-    setLoading(false);
-  };
-
   return (
     <>
       <style>{`
@@ -62,13 +12,17 @@ export default function AboutMe() {
           min-height: 100vh;
           background: #000;
           color: #fff;
-          padding: 60px 24px;
+          padding: 60px 16px;
           font-family: system-ui, sans-serif;
         }
 
+        /* MAIN BORDER CONTAINER */
         .container {
-          max-width: 900px;
+          max-width: 720px;
           margin: 0 auto;
+          padding: 48px 32px;
+          border: 1px solid #1f1f1f;
+          border-radius: 16px;
         }
 
         /* PROFILE */
@@ -101,7 +55,7 @@ export default function AboutMe() {
         }
 
         .socials {
-          margin-top: 12px;
+          margin-top: 14px;
           display: flex;
           gap: 18px;
         }
@@ -109,7 +63,7 @@ export default function AboutMe() {
         .socials a {
           color: #fff;
           font-size: 22px;
-          opacity: 0.8;
+          opacity: 0.85;
           transition: 0.2s;
         }
 
@@ -126,78 +80,55 @@ export default function AboutMe() {
         .section h2 {
           font-size: 18px;
           font-weight: 700;
-          margin-bottom: 10px;
+          margin-bottom: 12px;
           letter-spacing: 1px;
         }
 
         .about-text {
           line-height: 1.7;
-          opacity: 0.85;
+          opacity: 0.9;
         }
 
-        /* CONTACT */
-        .contact-wrapper {
-          display: flex;
-          justify-content: center;
-          margin-top: 48px;
+        /* PERSONAL INFO */
+        .personal-info {
+          margin-top: 28px;
+          padding-left: 14px;
+          border-left: 2px solid #1d9bf0;
         }
 
-        .contact-card {
-          width: 100%;
-          max-width: 420px;
-          background: #0d0d0d;
-          padding: 24px;
-          border-radius: 14px;
-          border: 1px solid #1f1f1f;
+        .personal-info li {
+          margin-bottom: 6px;
+          opacity: 0.9;
         }
 
-        .contact-card input,
-        .contact-card textarea {
-          width: 100%;
-          margin-bottom: 12px;
-          padding: 10px;
-          background: #000;
-          border: 1px solid #222;
-          color: #fff;
-          border-radius: 8px;
+        /* PROJECT */
+        .project-section {
+          margin-top: 56px;
         }
 
-        .contact-card button {
-          width: 100%;
-          padding: 10px;
-          background: #1d9bf0;
-          border: none;
-          color: #fff;
-          font-weight: 600;
-          border-radius: 8px;
-          cursor: pointer;
-        }
-
-        .contact-title {
+        .project-section h2 {
           text-align: center;
-          font-size: 18px;
-          font-weight: 700;
-          margin-bottom: 14px;
-          letter-spacing: 1px;
+          margin-bottom: 18px;
         }
 
-        /* MARQUEE */
         .marquee-wrapper {
           position: relative;
           overflow: hidden;
-          height: 80px;
-          margin-top: 20px;
+          height: 90px;
+          width: 100%;
         }
 
         .marquee-track {
           display: flex;
+          align-items: center;
           width: max-content;
-          animation: run 20s linear infinite;
+          animation: run 22s linear infinite;
         }
 
         .marquee-track img {
-          height: 44px;
-          margin: 0 40px;
+          height: 48px;
+          margin: 0 48px;
+          opacity: 0.9;
         }
 
         @keyframes run {
@@ -245,34 +176,22 @@ export default function AboutMe() {
           <div className="section">
             <h2>ABOUT ME</h2>
             <div className="about-text">
-              <strong>Aprilio</strong> adalah developer yang fokus
-              ke web modern, UI clean, dan produk digital yang
-              fungsional serta scalable.
+              <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
+              UI clean, dan produk digital yang fungsional serta scalable.
             </div>
-          </div>
 
-          {/* CONTACT */}
-          <div className="contact-wrapper">
-            <div>
-              <div className="contact-title">CONTACT ME</div>
-              <form className="contact-card" onSubmit={sendMessage}>
-                <input name="name" placeholder="Name" required />
-                <input name="email" type="email" placeholder="Email" required />
-                <textarea
-                  name="message"
-                  rows="4"
-                  placeholder="Message"
-                  required
-                />
-                <button disabled={loading}>
-                  {loading ? "Sending..." : "Send"}
-                </button>
-              </form>
+            <div className="personal-info">
+              <h3 style={{ marginBottom: "10px" }}>Personal Information</h3>
+              <ul>
+                <li><strong>Name:</strong> Aprilio / Vestionz</li>
+                <li><strong>Region:</strong> Majalengka, Jawa Barat</li>
+                <li><strong>Favorite Food:</strong> Mie Ayam, Ayam Geprek</li>
+              </ul>
             </div>
           </div>
 
           {/* PROJECT */}
-          <div className="section">
+          <div className="project-section">
             <h2>My Project</h2>
 
             <div className="marquee-wrapper">
