@@ -15,7 +15,7 @@ export default function AboutMe() {
           min-height: 100vh;
           background: #000;
           color: #fff;
-          padding: 60px 16px;
+          padding: 10px 16px 120px;
           font-family: system-ui, sans-serif;
         }
 
