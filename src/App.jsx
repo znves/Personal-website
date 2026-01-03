@@ -25,7 +25,6 @@ export default function AboutMe() {
           padding: 5px 15px;
         }
 
-        /* PROFILE */
         .profile {
           display: flex;
           flex-direction: column;
@@ -72,7 +71,6 @@ export default function AboutMe() {
           transform: translateY(-2px);
         }
 
-        /* SECTION */
         .section {
           margin-top: 48px;
         }
@@ -103,7 +101,6 @@ export default function AboutMe() {
           opacity: 0.9;
         }
 
-        /* PROJECT */
         .marquee-wrapper {
           position: relative;
           overflow: hidden;
@@ -173,7 +170,6 @@ export default function AboutMe() {
       <div className="about-page">
         <div className="container">
 
-          {/* PROFILE */}
           <div className="profile">
             <img src="/profile.webp" className="profile-img" />
             <div className="name">
@@ -187,14 +183,12 @@ export default function AboutMe() {
             </div>
           </div>
 
-          {/* ABOUT */}
           <div className="section">
             <h2>About Me</h2>
             <div className="about-text">
               Hi! I'm <strong>Aprilio</strong>, a high school student. My hobbies include playing games, sleeping, reading novels, exercising, and listening to music. I enjoy learning new things, meeting new people, trying challenging experiences, and creating cool stuff. Every day, I strive to grow, have fun, and enjoy the process.
             </div>
 
-            {/* PERSONAL INFORMATION */}
             <div className="personal-info">
               <h2>Personal Information</h2>
               <ul>
@@ -205,7 +199,6 @@ export default function AboutMe() {
             </div>
           </div>
 
-          {/* PROJECT */}
           <div className="section">
             <h2>My Project</h2>
 
@@ -227,8 +220,6 @@ export default function AboutMe() {
                     <span className="project-name">{p.name}</span>
                   </div>
                 ))}
-
-                {/* DUPLIKAT BIAR JALAN TERUS */}
                 {[
                   { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.my.id" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
