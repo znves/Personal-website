@@ -197,22 +197,46 @@ export default function AboutMe() {
 
           {/* PROJECT */}
           <div className="section">
-            <h2>My Project</h2>
+          <h2>My Project</h2>
+           <div className="marquee-wrapper">
+           <div className="shadow left" />
+           <div className="shadow right" />
 
-            <div className="marquee-wrapper">
-              <div className="shadow left" />
-              <div className="shadow right" />
+          <div className="marquee-track">
+      {[
+        { name: "Skynefh", img: "/logo1.png", link: "https://skynefh.com" },
+        { name: "Wiradaka", img: "/logo2.png", link: "https://wiradaka.my.id" },
+        { name: "CodeLab", img: "/logo3.png", link: "https://github.com" },
+      ].map((p, i) => (
+        <a
+          key={i}
+          href={p.link}
+          target="_blank"
+          className="project-item"
+        >
+          <img src={p.img} alt={p.name} />
+          <span>{p.name}</span>
+        </a>
+      ))}
 
-              <div className="marquee-track">
-                <img src="/logo1.png" />
-                <img src="/logo2.png" />
-                <img src="/logo3.png" />
-                <img src="/logo1.png" />
-                <img src="/logo2.png" />
-                <img src="/logo3.png" />
-              </div>
-            </div>
-          </div>
+      {[
+        { name: "Skynefh", img: "/logo1.png", link: "https://skynefh.com" },
+        { name: "Wiradaka", img: "/logo2.png", link: "https://wiradaka.my.id" },
+        { name: "CodeLab", img: "/logo3.png", link: "https://github.com" },
+      ].map((p, i) => (
+        <a
+          key={`dup-${i}`}
+          href={p.link}
+          target="_blank"
+          className="project-item"
+        >
+          <img src={p.img} alt={p.name} />
+          <span>{p.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
 
         </div>
       </div>
