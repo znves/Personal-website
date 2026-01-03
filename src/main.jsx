@@ -3,18 +3,18 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import App from "./App";
-import Create from "./pages/Create";
-import Coding from "./pages/Coding";
-import MyProjects from "./pages/MyProjects";
+import Socials from "./Socials";
+import Stats from "./Stats";
+import NotFound from "./NotFound";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/coding/:id" element={<Coding />} />
-        <Route path="/myproject" element={<MyProjects />} />
+        <Route path="/socials" element={<Socials />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
