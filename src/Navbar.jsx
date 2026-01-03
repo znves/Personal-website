@@ -28,7 +28,7 @@ export default function Navbar() {
       <style>{`
         .navbar {
           width: 100%;
-          padding: 16px 12px;
+          padding: 10px 6px;
           display: flex;
           justify-content: center;
           background: #000;
