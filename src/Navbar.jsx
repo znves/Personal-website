@@ -5,14 +5,10 @@ export default function Navbar() {
 
   let trail = [];
 
-  // ROOT / PROFILE
   if (path === "/") {
-    trail = [
-      { label: "Profile", icon: <FaUser /> },
-    ];
+    trail = [{ label: "Profile", icon: <FaUser /> }];
   }
 
-  // STATS
   if (path === "/stats") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
@@ -20,7 +16,6 @@ export default function Navbar() {
     ];
   }
 
-  // SOCIALS
   if (path === "/socials") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
@@ -36,14 +31,12 @@ export default function Navbar() {
           padding: 16px 12px;
           display: flex;
           justify-content: center;
-          align-items: center;
           background: #000;
         }
 
         .navbar-inner {
           display: flex;
           align-items: center;
-          gap: 10px;
           font-size: 14px;
           color: #fff;
           opacity: 0.9;
@@ -51,7 +44,12 @@ export default function Navbar() {
 
         .brand {
           font-weight: 600;
-          margin-right: 6px;
+          margin-right: 6px; 
+        }
+
+        .pipe {
+          margin: 0 6px; 
+          opacity: 0.6;
         }
 
         .crumb {
@@ -63,11 +61,10 @@ export default function Navbar() {
 
         .crumb svg {
           font-size: 14px;
-          opacity: 0.9;
         }
 
-        .separator {
-          margin: 0 4px;
+        .arrow {
+          margin: 0 8px;
           opacity: 0.5;
         }
       `}</style>
@@ -75,14 +72,14 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="navbar-inner">
           <span className="brand">Aprilio</span>
+          <span className="pipe">|</span>
 
           {trail.map((item, i) => (
             <span key={i} className="crumb">
-              <span className="separator"></span>
               {item.icon}
               <span>{item.label}</span>
-              {i !== trail.length - 1 && (
-                <span className="separator">&gt;</span>
+              {i < trail.length - 1 && (
+                <span className="arrow">&gt;</span>
               )}
             </span>
           ))}
