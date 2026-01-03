@@ -6,4 +6,4 @@ export default defineConfig({
   plugins: [react()],
 })
 
-// Github: @vestionz
+// Github: vestionz
