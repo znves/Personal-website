@@ -16,7 +16,6 @@ export default function AboutMe() {
           font-family: system-ui, sans-serif;
         }
 
-        /* MAIN CONTAINER (NO BORDER) */
         .container {
           max-width: 720px;
           margin: 0 auto;
@@ -79,7 +78,6 @@ export default function AboutMe() {
           font-size: 18px;
           font-weight: 700;
           margin-bottom: 12px;
-          letter-spacing: 1px;
         }
 
         .about-text {
@@ -87,40 +85,11 @@ export default function AboutMe() {
           opacity: 0.9;
         }
 
-        /* PERSONAL INFO */
-        .personal-info {
-          margin-top: 28px;
-        }
-
-        .personal-info h3 {
-          margin-bottom: 10px;
-        }
-
-        .personal-info ul {
-          padding-left: 16px;
-          margin: 0;
-        }
-
-        .personal-info li {
-          margin-bottom: 6px;
-          opacity: 0.9;
-        }
-
         /* PROJECT */
-        .project-section {
-          margin-top: 56px;
-        }
-
-        .project-section h2 {
-          text-align: center;
-          margin-bottom: 18px;
-        }
-
         .marquee-wrapper {
           position: relative;
           overflow: hidden;
-          height: 90px;
-          width: 100%;
+          height: 100px;
         }
 
         .marquee-track {
@@ -130,15 +99,35 @@ export default function AboutMe() {
           animation: run 22s linear infinite;
         }
 
-        .marquee-track img {
-          height: 48px;
-          margin: 0 48px;
+        .project-item {
+          margin: 0 36px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .project-item img {
+          height: 44px;
+          margin-bottom: 6px;
           opacity: 0.9;
+          cursor: pointer;
+        }
+
+        .project-item img:hover {
+          opacity: 1;
+        }
+
+        .project-name {
+          font-size: 12px;
+          color: #fff;
+          opacity: 0.85;
+          text-decoration: none;
+          pointer-events: none; /* ⛔ biar ga bisa diklik */
         }
 
         @keyframes run {
-        from { transform: translateX(-50%) }
-        to { transform: translateX(0) }
+          from { transform: translateX(-50%) }
+          to { transform: translateX(0) }
         }
 
         .shadow {
@@ -166,7 +155,7 @@ export default function AboutMe() {
 
           {/* PROFILE */}
           <div className="profile">
-            <img src="/profile.jpg" className="profile-img" />
+            <img src="/profile.webp" className="profile-img" />
             <div className="name">
               Aprilio <MdVerified className="verified" />
             </div>
@@ -184,59 +173,48 @@ export default function AboutMe() {
               <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
               UI clean, dan produk digital yang fungsional serta scalable.
             </div>
-
-            <div className="section">
-              <h2>Personal Information</h2>
-              <ul>
-                <li><strong>Name:</strong> Aprilio / Vestionz</li>
-                <li><strong>Region:</strong> Majalengka, Jawa Barat</li>
-                <li><strong>Favorite Food:</strong> Ayam Geprek</li>
-              </ul>
-            </div>
           </div>
 
           {/* PROJECT */}
           <div className="section">
-          <h2>My Project</h2>
-           <div className="marquee-wrapper">
-           <div className="shadow left" />
-           <div className="shadow right" />
+            <h2>My Project</h2>
 
-          <div className="marquee-track">
-      {[
-        { name: "Skynefh", img: "/logo1.png", link: "https://skynefh.com" },
-        { name: "Wiradaka", img: "/logo2.png", link: "https://wiradaka.my.id" },
-        { name: "CodeLab", img: "/logo3.png", link: "https://github.com" },
-      ].map((p, i) => (
-        <a
-          key={i}
-          href={p.link}
-          target="_blank"
-          className="project-item"
-        >
-          <img src={p.img} alt={p.name} />
-          <span>{p.name}</span>
-        </a>
-      ))}
+            <div className="marquee-wrapper">
+              <div className="shadow left" />
+              <div className="shadow right" />
 
-      {[
-        { name: "Skynefh", img: "/logo1.png", link: "https://skynefh.com" },
-        { name: "Wiradaka", img: "/logo2.png", link: "https://wiradaka.my.id" },
-        { name: "CodeLab", img: "/logo3.png", link: "https://github.com" },
-      ].map((p, i) => (
-        <a
-          key={`dup-${i}`}
-          href={p.link}
-          target="_blank"
-          className="project-item"
-        >
-          <img src={p.img} alt={p.name} />
-          <span>{p.name}</span>
-        </a>
-      ))}
-    </div>
-  </div>
-</div>
+              <div className="marquee-track">
+                {[
+                  { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.com" },
+                  { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
+                  { name: "Rhinzan", img: "/rhinzan.webp", link: "#" },
+                  { name: "WIW", img: "/wiw.webp", link: "#" },
+                ].map((p, i) => (
+                  <div className="project-item" key={i}>
+                    <a href={p.link} target="_blank">
+                      <img src={p.img} alt={p.name} />
+                    </a>
+                    <span className="project-name">{p.name}</span>
+                  </div>
+                ))}
+
+                {/* DUPLIKAT BIAR INFINITE */}
+                {[
+                  { name: "Skynefh", img: "/skynefh.webp", link: "https://skynefh.com" },
+                  { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
+                  { name: "Rhinzan", img: "/rhinzan.webp", link: "#" },
+                  { name: "WIW", img: "/wiw.webp", link: "#" },
+                ].map((p, i) => (
+                  <div className="project-item" key={`dup-${i}`}>
+                    <a href={p.link} target="_blank">
+                      <img src={p.img} alt={p.name} />
+                    </a>
+                    <span className="project-name">{p.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
