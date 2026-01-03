@@ -39,7 +39,7 @@ export default function Contact() {
 
         .contact-header {
           text-align: center;
-          margin-top: 8px; /* INI KUNCI JARAK NAVBAR */
+          margin-top: 8px; 
           margin-bottom: 36px;
         }
 
@@ -50,7 +50,7 @@ export default function Contact() {
           gap: 8px;
           font-size: 24px;
           font-weight: 600;
-          color: #3b82f6; /* BIRU */
+          color: #ffffff; 
         }
 
         .contact-line {
@@ -91,7 +91,7 @@ export default function Contact() {
 
         .contact-card:hover {
           transform: translateY(-2px);
-          border-color: rgba(59,130,246,0.6); /* BIRU */
+          border-color: rgba(59,130,246,0.6); 
         }
 
         .contact-icon {
