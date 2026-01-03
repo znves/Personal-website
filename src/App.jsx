@@ -2,6 +2,7 @@ import { FaInstagram, FaTiktok, FaGithub, FaDiscord} from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 export default function AboutMe() {
   return (
@@ -167,6 +168,8 @@ export default function AboutMe() {
         }
       `}</style>
 
+      <Navbar />
+      
       <div className="about-page">
         <div className="container">
 
