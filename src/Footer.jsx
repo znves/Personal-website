@@ -6,7 +6,6 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        /* DIVIDER */
         .footer-divider {
           position: fixed;
           bottom: 52px;
@@ -17,7 +16,6 @@ export default function Footer() {
           z-index: 9;
         }
 
-        /* FOOTER */
         .footer {
           position: fixed;
           bottom: 0;
@@ -31,7 +29,6 @@ export default function Footer() {
           z-index: 10;
         }
 
-        /* ITEM */
         .footer-item {
           display: flex;
           flex-direction: column;
@@ -49,7 +46,6 @@ export default function Footer() {
           font-size: 18px; 
         }
 
-        /* ACTIVE */
         .footer-item.active {
           background: #fff;
           color: #000;
@@ -60,9 +56,7 @@ export default function Footer() {
         }
       `}</style>
 
-      {/* DIVIDER */}
       <div className="footer-divider" />
-
       <footer className="footer">
         <a
           href="/socials"
@@ -71,7 +65,6 @@ export default function Footer() {
           <FaUsers />
           <span>Socials</span>
         </a>
-
         <a
           href="/"
           className={`footer-item ${path === "/" ? "active" : ""}`}
@@ -79,7 +72,6 @@ export default function Footer() {
           <FaUser />
           <span>Profile</span>
         </a>
-
         <a
           href="/stats"
           className={`footer-item ${path === "/stats" ? "active" : ""}`}
