@@ -78,7 +78,7 @@ export default function Navbar() {
 
           {trail.map((item, i) => (
             <span key={i} className="crumb">
-              <span className="separator">|</span>
+              <span className="separator"></span>
               {item.icon}
               <span>{item.label}</span>
               {i !== trail.length - 1 && (
