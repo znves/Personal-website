@@ -1,20 +1,33 @@
 import { useEffect, useState } from "react";
 import { MdVerified } from "react-icons/md";
-import { FaGithub, FaUsers, FaUserPlus, FaBook, FaStar, FaGlobe } from "react-icons/fa";
+import {
+  FaGithub,
+  FaUsers,
+  FaUserPlus,
+  FaBook,
+  FaStar,
+  FaGlobe,
+  FaCode
+} from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 export default function GitHubStats() {
-  const username = "vestionz"; // USERNAME GITHUB
-  const [data, setData] = useState(null);
+  const username = "vestionz"; // CHANGE USERNAME
+  const [profile, setProfile] = useState(null);
+  const [repos, setRepos] = useState([]);
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}`)
       .then(res => res.json())
-      .then(setData);
+      .then(setProfile);
+
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
+      .then(res => res.json())
+      .then(setRepos);
   }, []);
 
-  if (!data) return null;
+  if (!profile) return null;
 
   return (
     <>
@@ -26,17 +39,13 @@ export default function GitHubStats() {
 
         .github-page {
           min-height: 100vh;
-          padding: 80px 16px 140px;
+          padding: 5px 15px 120px;
         }
 
+        /* NO BORDER HERE */
         .github-container {
           max-width: 720px;
           margin: 0 auto;
-          padding: 28px 24px;
-          border-radius: 28px;
-          background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(255,255,255,0.08);
-          box-shadow: 0 20px 60px rgba(0,0,0,0.7);
         }
 
         .github-title {
@@ -47,6 +56,7 @@ export default function GitHubStats() {
           justify-content: center;
           align-items: center;
           gap: 10px;
+          margin-top: 70px;
         }
 
         .github-line {
@@ -62,14 +72,15 @@ export default function GitHubStats() {
           font-size: 14px;
           opacity: 0.75;
           max-width: 340px;
-          margin: 0 auto 36px;
+          margin: 0 auto 28px;
           line-height: 1.5;
         }
 
+        /* MAIN CARD */
         .github-card {
           background: #050505;
           border-radius: 26px;
-          padding: 34px 20px;
+          padding: 30px 20px;
           border: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -117,6 +128,7 @@ export default function GitHubStats() {
           color: #3b82f6;
         }
 
+        /* STATS */
         .stats {
           margin-top: 30px;
           display: grid;
@@ -135,7 +147,6 @@ export default function GitHubStats() {
         .stat-icon {
           font-size: 18px;
           margin-bottom: 6px;
-          opacity: 0.9;
         }
 
         .stat-value {
@@ -147,6 +158,59 @@ export default function GitHubStats() {
           font-size: 12px;
           opacity: 0.7;
           margin-top: 2px;
+        }
+
+        /* REPO SECTION */
+        .repo-section {
+          margin-top: 30px;
+        }
+
+        .repo-title {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 14px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .repo-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .repo-card {
+          background: #000;
+          border-radius: 16px;
+          padding: 14px 16px;
+          border: 1px solid rgba(255,255,255,0.08);
+          text-decoration: none;
+          color: #fff;
+          transition: 0.25s;
+        }
+
+        .repo-card:hover {
+          border-color: #3b82f6;
+          transform: translateY(-2px);
+        }
+
+        .repo-name {
+          font-size: 15px;
+          font-weight: 600;
+        }
+
+        .repo-desc {
+          font-size: 13px;
+          opacity: 0.75;
+          margin-top: 4px;
+        }
+
+        .repo-empty {
+          font-size: 14px;
+          opacity: 0.6;
+          text-align: center;
+          padding: 20px 0;
         }
 
         @media (max-width: 520px) {
@@ -172,19 +236,19 @@ export default function GitHubStats() {
 
           <div className="github-card">
             <div className="profile">
-              <img src={data.avatar_url} className="avatar" />
+              <img src={profile.avatar_url} className="avatar" />
 
               <div className="name">
-                {data.name || data.login}
+                {profile.name || profile.login}
                 <MdVerified className="verified" />
               </div>
 
-              <div className="username">@{data.login}</div>
+              <div className="username">@{profile.login}</div>
 
               <div className="info">
-                {data.location && <span>{data.location}</span>}
-                {data.blog && (
-                  <a href={data.blog} target="_blank" rel="noreferrer">
+                {profile.location && <span>{profile.location}</span>}
+                {profile.blog && (
+                  <a href={profile.blog} target="_blank" rel="noreferrer">
                     <FaGlobe />
                   </a>
                 )}
@@ -194,27 +258,56 @@ export default function GitHubStats() {
             <div className="stats">
               <div className="stat">
                 <FaUsers className="stat-icon" />
-                <div className="stat-value">{data.followers}</div>
+                <div className="stat-value">{profile.followers}</div>
                 <div className="stat-label">Followers</div>
               </div>
 
               <div className="stat">
                 <FaUserPlus className="stat-icon" />
-                <div className="stat-value">{data.following}</div>
+                <div className="stat-value">{profile.following}</div>
                 <div className="stat-label">Following</div>
               </div>
 
               <div className="stat">
                 <FaBook className="stat-icon" />
-                <div className="stat-value">{data.public_repos}</div>
+                <div className="stat-value">{profile.public_repos}</div>
                 <div className="stat-label">Repositories</div>
               </div>
 
               <div className="stat">
                 <FaStar className="stat-icon" />
-                <div className="stat-value">{data.public_gists}</div>
+                <div className="stat-value">{profile.public_gists}</div>
                 <div className="stat-label">Starred</div>
               </div>
+            </div>
+
+            <div className="repo-section">
+              <div className="repo-title">
+                <FaCode /> Public Projects
+              </div>
+
+              {repos.length > 0 ? (
+                <div className="repo-list">
+                  {repos.map(repo => (
+                    <a
+                      key={repo.id}
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="repo-card"
+                    >
+                      <div className="repo-name">{repo.name}</div>
+                      {repo.description && (
+                        <div className="repo-desc">{repo.description}</div>
+                      )}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <div className="repo-empty">
+                  This user does not have any public projects.
+                </div>
+              )}
             </div>
           </div>
         </div>
