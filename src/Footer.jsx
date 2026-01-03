@@ -6,14 +6,14 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        /* FOOTER DIVIDER */
+        /* DIVIDER */
         .footer-divider {
           position: fixed;
-          bottom: 64px;
+          bottom: 52px;
           left: 0;
           width: 100%;
           height: 1px;
-          background: rgba(255,255,255,0.15);
+          background: rgba(255,255,255,0.12);
           z-index: 9;
         }
 
@@ -23,7 +23,7 @@ export default function Footer() {
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 64px;
+          height: 52px; /* 🔽 lebih kecil */
           background: rgba(0,0,0,0.95);
           display: flex;
           justify-content: space-around;
@@ -36,16 +36,17 @@ export default function Footer() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 4px;
-          padding: 6px 16px;
-          border-radius: 14px;
+          gap: 2px;
+          padding: 4px 12px;
+          border-radius: 12px;
           color: #aaa;
           text-decoration: none;
-          transition: 0.25s ease;
+          font-size: 10px; 
+          transition: 0.2s ease;
         }
 
         .footer-item svg {
-          font-size: 20px;
+          font-size: 18px; 
         }
 
         /* ACTIVE */
@@ -59,7 +60,7 @@ export default function Footer() {
         }
       `}</style>
 
-      {/* GARIS PEMBATAS */}
+      {/* DIVIDER */}
       <div className="footer-divider" />
 
       <footer className="footer">
