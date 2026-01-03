@@ -1,3 +1,6 @@
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+
 export default function Stats() {
   return (
     <>
@@ -25,7 +28,7 @@ export default function Stats() {
         }
 
         .nf-code {
-          font-size: 96px;
+          font-size: 50px;
           font-weight: 800;
           letter-spacing: 2px;
           opacity: 0.9;
@@ -63,6 +66,8 @@ export default function Stats() {
         }
       `}</style>
 
+      <Navbar />
+      
       <div className="notfound">
         <div className="nf-box">
           <div className="nf-code">Coming Soon</div>
@@ -71,6 +76,8 @@ export default function Stats() {
             This website will be available very soon.
           </div>
 
+          <Footer />
+          
         </div>
       </div>
     </>
