@@ -42,30 +42,28 @@ export default function Navbar() {
           opacity: 0.9;
         }
 
-        .brand {
-          font-weight: 600;
-          margin-right: 6px; 
-        }
-
-        .pipe {
-          margin: 0 6px; 
-          opacity: 0.6;
-        }
-
-        .crumb {
+        .brand,
+        .pipe,
+        .crumb,
+        .arrow {
           display: flex;
           align-items: center;
-          gap: 6px;
-          white-space: nowrap;
+        }
+
+        .brand { margin-right: 6px; font-weight: 600; }
+        .pipe { margin-right: 6px; opacity: 0.6; }
+
+        .crumb {
+          gap: 6px; 
+        }
+
+        .arrow {
+          margin: 0 6px; 
+          opacity: 0.5;
         }
 
         .crumb svg {
           font-size: 14px;
-        }
-
-        .arrow {
-          margin: 0 8px;
-          opacity: 0.5;
         }
       `}</style>
 
