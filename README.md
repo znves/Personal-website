@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/public/vestionz.png" width="400" alt="Vestionz Logo" />
+  <img src="/public/vestionz.png" width="450" alt="Vestionz Logo" />
 </p>
 
 <div align="center">
@@ -20,7 +20,7 @@ A modern portfolio website showcasing your profile, tech stack, GitHub projects,
 
 Deployment on Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F88JC%2FPortfolio)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvestionz%2FPersonal-website)
 
 ## License
 
