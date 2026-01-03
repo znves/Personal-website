@@ -1,4 +1,4 @@
-import { FaUser, FaChartBar, FaShareAlt } from "react-icons/fa";
+import { FaUser, FaChartBar, FaUsers } from "react-icons/fa";
 
 export default function Navbar() {
   const path = window.location.pathname;
@@ -19,7 +19,7 @@ export default function Navbar() {
   if (path === "/socials") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
-      { label: "Socials", icon: <FaShareAlt /> },
+      { label: "Socials", icon: <FaUsers /> },
     ];
   }
 
@@ -77,7 +77,7 @@ export default function Navbar() {
               {item.icon}
               <span>{item.label}</span>
               {i < trail.length - 1 && (
-                <span className="arrow">&gt;</span>
+                <span className="arrow"> &gt;</span>
               )}
             </span>
           ))}
