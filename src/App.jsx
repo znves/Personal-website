@@ -4,36 +4,52 @@ import { MdVerified } from "react-icons/md";
 
 export default function AboutMe() {
   const [loading, setLoading] = useState(false);
+
   const WEBHOOK_URL = "PASTE_DISCORD_WEBHOOK_DI_SINI";
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     const form = e.target;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-    await fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: "AboutMe Contact",
-        embeds: [
-          {
-            title: "📩 New Message",
-            color: 3447003,
-            fields: [
-              { name: "Name", value: form.name.value || "-" },
-              { name: "Email", value: form.email.value || "-" },
-              { name: "Message", value: form.message.value || "-" },
-            ],
-          },
-        ],
-      }),
-    });
+    if (!name || !email || !message) {
+      alert("Semua field wajib diisi");
+      return;
+    }
 
-    form.reset();
+    setLoading(true);
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: "AboutMe Contact",
+          embeds: [
+            {
+              title: "📩 New Contact Message",
+              color: 3447003,
+              fields: [
+                { name: "Name", value: name },
+                { name: "Email", value: email },
+                { name: "Message", value: message },
+              ],
+              footer: { text: "AboutMe Page" },
+            },
+          ],
+        }),
+      });
+
+      form.reset();
+      alert("Message sent 🚀");
+    } catch (err) {
+      alert("Failed to send message");
+    }
+
     setLoading(false);
-    alert("Message sent 🚀");
   };
 
   return (
@@ -55,7 +71,7 @@ export default function AboutMe() {
           margin: 0 auto;
         }
 
-        /* PROFILE CENTER */
+        /* PROFILE */
         .profile {
           display: flex;
           flex-direction: column;
@@ -94,9 +110,15 @@ export default function AboutMe() {
           color: #fff;
           font-size: 22px;
           opacity: 0.8;
+          transition: 0.2s;
         }
 
-        /* SECTIONS LEFT */
+        .socials a:hover {
+          opacity: 1;
+          transform: translateY(-2px);
+        }
+
+        /* SECTION */
         .section {
           margin-top: 48px;
         }
@@ -117,7 +139,7 @@ export default function AboutMe() {
         .contact-wrapper {
           display: flex;
           justify-content: center;
-          margin-top: 40px;
+          margin-top: 48px;
         }
 
         .contact-card {
@@ -148,6 +170,15 @@ export default function AboutMe() {
           color: #fff;
           font-weight: 600;
           border-radius: 8px;
+          cursor: pointer;
+        }
+
+        .contact-title {
+          text-align: center;
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 14px;
+          letter-spacing: 1px;
         }
 
         /* MARQUEE */
@@ -180,6 +211,7 @@ export default function AboutMe() {
           width: 80px;
           height: 100%;
           pointer-events: none;
+          z-index: 2;
         }
 
         .shadow.left {
@@ -213,21 +245,30 @@ export default function AboutMe() {
           <div className="section">
             <h2>ABOUT ME</h2>
             <div className="about-text">
-              <strong>Aprilio</strong> adalah developer yang fokus ke web modern,
-              UI clean, dan produk digital yang fungsional.
+              <strong>Aprilio</strong> adalah developer yang fokus
+              ke web modern, UI clean, dan produk digital yang
+              fungsional serta scalable.
             </div>
           </div>
 
           {/* CONTACT */}
           <div className="contact-wrapper">
-            <form className="contact-card" onSubmit={sendMessage}>
-              <input name="name" placeholder="Name" />
-              <input name="email" placeholder="Email" />
-              <textarea name="message" rows="4" placeholder="Message" />
-              <button disabled={loading}>
-                {loading ? "Sending..." : "Send"}
-              </button>
-            </form>
+            <div>
+              <div className="contact-title">CONTACT ME</div>
+              <form className="contact-card" onSubmit={sendMessage}>
+                <input name="name" placeholder="Name" required />
+                <input name="email" type="email" placeholder="Email" required />
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Message"
+                  required
+                />
+                <button disabled={loading}>
+                  {loading ? "Sending..." : "Send"}
+                </button>
+              </form>
+            </div>
           </div>
 
           {/* PROJECT */}
