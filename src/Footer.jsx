@@ -1,4 +1,4 @@
-import { FaFolderOpen, FaUser, FaChartBar } from "react-icons/fa";
+import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 
 export default function Footer() {
   const path = window.location.pathname;
@@ -23,7 +23,7 @@ export default function Footer() {
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 52px; /* 🔽 lebih kecil */
+          height: 52px; 
           background: rgba(0,0,0,0.95);
           display: flex;
           justify-content: space-around;
@@ -65,11 +65,11 @@ export default function Footer() {
 
       <footer className="footer">
         <a
-          href="/project"
+          href="/socials"
           className={`footer-item ${path === "/project" ? "active" : ""}`}
         >
-          <FaFolderOpen />
-          <span>Project</span>
+          <FaUsers />
+          <span>Socials</span>
         </a>
 
         <a
