@@ -10,4 +10,4 @@ export default {
   plugins: [],
 }
 
-// Github: @vestionz
+// Github:@vestionz
