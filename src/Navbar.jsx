@@ -54,7 +54,7 @@ export default function Navbar() {
         .pipe { margin-right: 6px; opacity: 0.6; }
 
         .crumb {
-          gap: 6px; 
+          gap: 4px; 
         }
 
         .arrow {
@@ -77,7 +77,7 @@ export default function Navbar() {
               {item.icon}
               <span>{item.label}</span>
               {i < trail.length - 1 && (
-                <span className="arrow"> &gt;</span>
+                <span className="arrow">&gt;</span>
               )}
             </span>
           ))}
