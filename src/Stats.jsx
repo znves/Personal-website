@@ -52,7 +52,6 @@ export default function GitHubStats() {
           margin: 0 auto;
         }
 
-        /* TITLE (NO BIG GAP ANYMORE) */
         .github-title {
           text-align: center;
           font-size: 22px;
@@ -80,7 +79,6 @@ export default function GitHubStats() {
           margin: 0 auto 18px;
         }
 
-        /* MAIN CARD */
         .github-card {
           background: #050505;
           border-radius: 20px;
@@ -116,23 +114,8 @@ export default function GitHubStats() {
         .username {
           font-size: 12px;
           opacity: 0.65;
-          margin-top: 2px;
         }
 
-        .info {
-          display: flex;
-          justify-content: center;
-          gap: 10px;
-          margin-top: 6px;
-          font-size: 11px;
-          opacity: 0.65;
-        }
-
-        .info a {
-          color: #3b82f6;
-        }
-
-        /* STATS */
         .stats {
           margin-top: 18px;
           display: grid;
@@ -163,7 +146,7 @@ export default function GitHubStats() {
           opacity: 0.65;
         }
 
-        /* REPOS */
+        /* REPO SECTION */
         .repo-section {
           margin-top: 20px;
         }
@@ -171,7 +154,7 @@ export default function GitHubStats() {
         .repo-title {
           font-size: 14px;
           font-weight: 600;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
           display: flex;
           align-items: center;
           gap: 6px;
@@ -180,31 +163,30 @@ export default function GitHubStats() {
         .repo-list {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 10px;
         }
 
         .repo-card {
           background: #000;
           border-radius: 14px;
-          padding: 12px 14px;
+          padding: 14px;
           border: 1px solid rgba(255,255,255,0.08);
           text-decoration: none;
           color: #fff;
         }
 
+        /* SMALL META LIST */
         .repo-meta {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          font-size: 10px;
+          font-size: 11px;
           opacity: 0.65;
-          margin-bottom: 6px;
+          line-height: 1.6;
+          margin-bottom: 8px;
         }
 
-        .repo-meta span {
+        .repo-meta div {
           display: flex;
           align-items: center;
-          gap: 3px;
+          gap: 6px;
         }
 
         .repo-name {
@@ -215,7 +197,7 @@ export default function GitHubStats() {
         .repo-desc {
           font-size: 11px;
           opacity: 0.65;
-          margin-top: 3px;
+          margin-top: 4px;
         }
 
         .repo-empty {
@@ -249,22 +231,11 @@ export default function GitHubStats() {
           <div className="github-card">
             <div className="profile">
               <img src={profile.avatar_url} className="avatar" />
-
               <div className="name">
                 {profile.name || profile.login}
                 <MdVerified className="verified" />
               </div>
-
               <div className="username">@{profile.login}</div>
-
-              <div className="info">
-                {profile.location && <span>{profile.location}</span>}
-                {profile.blog && (
-                  <a href={profile.blog} target="_blank" rel="noreferrer">
-                    <FaGlobe />
-                  </a>
-                )}
-              </div>
             </div>
 
             <div className="stats">
@@ -273,19 +244,16 @@ export default function GitHubStats() {
                 <div className="stat-value">{profile.followers}</div>
                 <div className="stat-label">Followers</div>
               </div>
-
               <div className="stat">
                 <FaUserPlus className="stat-icon" />
                 <div className="stat-value">{profile.following}</div>
                 <div className="stat-label">Following</div>
               </div>
-
               <div className="stat">
                 <FaBook className="stat-icon" />
                 <div className="stat-value">{profile.public_repos}</div>
                 <div className="stat-label">Repos</div>
               </div>
-
               <div className="stat">
                 <FaStar className="stat-icon" />
                 <div className="stat-value">{profile.public_gists}</div>
@@ -309,12 +277,13 @@ export default function GitHubStats() {
                       className="repo-card"
                     >
                       <div className="repo-meta">
-                        <span><FaBalanceScale /> {repo.license?.spdx_id || "No license"}</span>
-                        <span><FaStar /> {repo.stargazers_count}</span>
-                        <span><FaCodeBranch /> {repo.forks_count}</span>
-                        <span><FaEye /> {repo.watchers_count}</span>
-                        <span><FaTag /> {repo.open_issues_count}</span>
-                        <span><FaClock /> {new Date(repo.updated_at).toLocaleDateString()}</span>
+                        <div><FaBalanceScale /> {repo.license?.spdx_id || "No license"}</div>
+                        <div><FaStar /> {repo.stargazers_count} stars</div>
+                        <div><FaCodeBranch /> {repo.forks_count} forks</div>
+                        <div><FaEye /> {repo.watchers_count} watching</div>
+                        <div><FaCodeBranch /> 1 branch</div>
+                        <div><FaTag /> 0 tags</div>
+                        <div><FaClock /> Activity</div>
                       </div>
 
                       <div className="repo-name">{repo.name}</div>
