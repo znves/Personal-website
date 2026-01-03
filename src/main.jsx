@@ -6,6 +6,7 @@ import App from "./App";
 import Socials from "./Socials";
 import Stats from "./Stats";
 import NotFound from "./NotFound";
+import "./index.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
