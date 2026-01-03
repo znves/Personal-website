@@ -7,7 +7,12 @@ import {
   FaBook,
   FaStar,
   FaGlobe,
-  FaCode
+  FaCode,
+  FaBalanceScale,
+  FaCodeBranch,
+  FaEye,
+  FaTag,
+  FaClock
 } from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -19,11 +24,11 @@ export default function GitHubStats() {
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}`)
-      .then(res => res.json())
+      .then(r => r.json())
       .then(setProfile);
 
     fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
-      .then(res => res.json())
+      .then(r => r.json())
       .then(setRepos);
   }, []);
 
@@ -42,45 +47,44 @@ export default function GitHubStats() {
           padding: 5px 15px 120px;
         }
 
-        /* NO BORDER HERE */
         .github-container {
           max-width: 720px;
           margin: 0 auto;
         }
 
+        /* TITLE (NO BIG GAP ANYMORE) */
         .github-title {
           text-align: center;
-          font-size: 28px;
-          font-weight: 700;
+          font-size: 22px;
+          font-weight: 600;
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 10px;
-          margin-top: 70px;
+          gap: 8px;
+          margin-top: 10px;
         }
 
         .github-line {
-          width: 70px;
-          height: 4px;
+          width: 48px;
+          height: 3px;
           background: #3b82f6;
-          margin: 14px auto;
+          margin: 8px auto;
           border-radius: 10px;
         }
 
         .github-sub {
           text-align: center;
-          font-size: 14px;
-          opacity: 0.75;
-          max-width: 340px;
-          margin: 0 auto 28px;
-          line-height: 1.5;
+          font-size: 12px;
+          opacity: 0.7;
+          max-width: 300px;
+          margin: 0 auto 18px;
         }
 
         /* MAIN CARD */
         .github-card {
           background: #050505;
-          border-radius: 26px;
-          padding: 30px 20px;
+          border-radius: 20px;
+          padding: 20px 16px;
           border: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -89,39 +93,39 @@ export default function GitHubStats() {
         }
 
         .avatar {
-          width: 96px;
-          height: 96px;
+          width: 72px;
+          height: 72px;
           border-radius: 50%;
-          margin-bottom: 14px;
+          margin-bottom: 10px;
         }
 
         .name {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 6px;
-          font-size: 22px;
+          gap: 5px;
+          font-size: 16px;
           font-weight: 600;
         }
 
         .verified {
           color: #3b82f6;
-          font-size: 18px;
+          font-size: 14px;
         }
 
         .username {
-          font-size: 14px;
-          opacity: 0.7;
-          margin-top: 4px;
+          font-size: 12px;
+          opacity: 0.65;
+          margin-top: 2px;
         }
 
         .info {
           display: flex;
           justify-content: center;
-          gap: 14px;
-          margin-top: 10px;
-          font-size: 13px;
-          opacity: 0.75;
+          gap: 10px;
+          margin-top: 6px;
+          font-size: 11px;
+          opacity: 0.65;
         }
 
         .info a {
@@ -130,87 +134,95 @@ export default function GitHubStats() {
 
         /* STATS */
         .stats {
-          margin-top: 30px;
+          margin-top: 18px;
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 14px;
+          gap: 10px;
         }
 
         .stat {
           background: #000;
-          border-radius: 16px;
-          padding: 18px 8px;
+          border-radius: 12px;
+          padding: 12px 6px;
           text-align: center;
           border: 1px solid rgba(255,255,255,0.08);
         }
 
         .stat-icon {
-          font-size: 18px;
-          margin-bottom: 6px;
+          font-size: 14px;
+          margin-bottom: 4px;
         }
 
         .stat-value {
-          font-size: 18px;
-          font-weight: 700;
+          font-size: 14px;
+          font-weight: 600;
         }
 
         .stat-label {
-          font-size: 12px;
-          opacity: 0.7;
-          margin-top: 2px;
+          font-size: 10px;
+          opacity: 0.65;
         }
 
-        /* REPO SECTION */
+        /* REPOS */
         .repo-section {
-          margin-top: 30px;
+          margin-top: 20px;
         }
 
         .repo-title {
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 600;
-          margin-bottom: 14px;
+          margin-bottom: 8px;
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
         }
 
         .repo-list {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 8px;
         }
 
         .repo-card {
           background: #000;
-          border-radius: 16px;
-          padding: 14px 16px;
+          border-radius: 14px;
+          padding: 12px 14px;
           border: 1px solid rgba(255,255,255,0.08);
           text-decoration: none;
           color: #fff;
-          transition: 0.25s;
         }
 
-        .repo-card:hover {
-          border-color: #3b82f6;
-          transform: translateY(-2px);
+        .repo-meta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          font-size: 10px;
+          opacity: 0.65;
+          margin-bottom: 6px;
+        }
+
+        .repo-meta span {
+          display: flex;
+          align-items: center;
+          gap: 3px;
         }
 
         .repo-name {
-          font-size: 15px;
+          font-size: 13px;
           font-weight: 600;
         }
 
         .repo-desc {
-          font-size: 13px;
-          opacity: 0.75;
-          margin-top: 4px;
+          font-size: 11px;
+          opacity: 0.65;
+          margin-top: 3px;
         }
 
         .repo-empty {
-          font-size: 14px;
+          font-size: 12px;
           opacity: 0.6;
           text-align: center;
-          padding: 20px 0;
+          padding: 14px 0;
         }
 
         @media (max-width: 520px) {
@@ -271,13 +283,13 @@ export default function GitHubStats() {
               <div className="stat">
                 <FaBook className="stat-icon" />
                 <div className="stat-value">{profile.public_repos}</div>
-                <div className="stat-label">Repositories</div>
+                <div className="stat-label">Repos</div>
               </div>
 
               <div className="stat">
                 <FaStar className="stat-icon" />
                 <div className="stat-value">{profile.public_gists}</div>
-                <div className="stat-label">Starred</div>
+                <div className="stat-label">Stars</div>
               </div>
             </div>
 
@@ -296,6 +308,15 @@ export default function GitHubStats() {
                       rel="noreferrer"
                       className="repo-card"
                     >
+                      <div className="repo-meta">
+                        <span><FaBalanceScale /> {repo.license?.spdx_id || "No license"}</span>
+                        <span><FaStar /> {repo.stargazers_count}</span>
+                        <span><FaCodeBranch /> {repo.forks_count}</span>
+                        <span><FaEye /> {repo.watchers_count}</span>
+                        <span><FaTag /> {repo.open_issues_count}</span>
+                        <span><FaClock /> {new Date(repo.updated_at).toLocaleDateString()}</span>
+                      </div>
+
                       <div className="repo-name">{repo.name}</div>
                       {repo.description && (
                         <div className="repo-desc">{repo.description}</div>
