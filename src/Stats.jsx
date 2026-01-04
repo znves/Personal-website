@@ -270,30 +270,30 @@ export default function GitHubStats() {
             </div>
 
             <div className="stats">
-            <div className="stat" style={{ color: "#22c55e" }}>
-            <FaUsers size={24} />
-            <div className="stat-value">{profile.followers}</div>
-         <div className="stat-label">Followers</div>
-       </div>
+              <div className="stat">
+                <FaUsers size={24} style={{ color: "#22c55e" }} />
+                <div className="stat-value">{profile.followers}</div>
+                <div className="stat-label">Followers</div>
+              </div>
 
-           <div className="stat" style={{ color: "#3b82f6" }}>
-           <FaUserPlus size={24} />
-           <div className="stat-value">{profile.following}</div>
-          <div className="stat-label">Following</div>
-       </div>
+              <div className="stat">
+                <FaUserPlus size={24} style={{ color: "#3b82f6" }} />
+                <div className="stat-value">{profile.following}</div>
+                <div className="stat-label">Following</div>
+              </div>
 
-          <div className="stat" style={{ color: "#f97316" }}>
-          <FaBook size={24} />
-          <div className="stat-value">{profile.public_repos}</div>
-          <div className="stat-label">Repos</div>
-       </div>
+              <div className="stat">
+                <FaBook size={24} style={{ color: "#f97316" }} />
+                <div className="stat-value">{profile.public_repos}</div>
+                <div className="stat-label">Repos</div>
+              </div>
 
-         <div className="stat" style={{ color: "#eab308" }}>
-         <FaStar size={24} />
-         <div className="stat-value">{profile.public_gists}</div>
-         <div className="stat-label">Stars</div>
-       </div>
-     </div>
+              <div className="stat">
+                <FaStar size={24} style={{ color: "#eab308" }} />
+                <div className="stat-value">{profile.public_gists}</div>
+                <div className="stat-label">Stars</div>
+              </div>
+            </div>
 
 
             <div className="repo-section">
