@@ -4,6 +4,7 @@ import {
   FaUsers,
   FaBlog,
   FaFolderOpen,
+  FaBloggerB,
 } from "react-icons/fa";
 
 export default function Navbar() {
@@ -41,8 +42,7 @@ export default function Navbar() {
 
     trail = [
       { label: "Profile", icon: <FaUser /> },
-      { label: "Blog", icon: <FaBlog /> },
-      { label: slug, icon: <FaBlog /> },
+      { label: slug, icon: <FaBloggerB /> },
     ];
   }
 
