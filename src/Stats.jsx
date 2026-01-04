@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AdBanner from "./components/AdBanner";
 
 export default function GitHubStats() {
   const username = "vestionz"; // USERNAME GITHUB
@@ -335,6 +336,7 @@ export default function GitHubStats() {
         </div>
       </div>
 
+      <AdBanner />
       <Footer />
     </>
   );
