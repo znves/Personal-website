@@ -41,7 +41,7 @@ export default function Navbar() {
     const slug = path.replace("/blog/", "").replace(/-/g, " ");
 
     trail = [
-      { label: "Profile", icon: <FaUser /> },
+      { label: "Blog", icon: <FaBlog /> },
       { label: slug, icon: <FaBloggerB /> },
     ];
   }
