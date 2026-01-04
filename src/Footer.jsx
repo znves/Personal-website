@@ -5,6 +5,7 @@ import {
   FaBlog,
   FaFolderOpen
 } from "react-icons/fa";
+import Footer from "./Footer";
 
 export default function Footer() {
   const path = window.location.pathname;
@@ -106,6 +107,7 @@ export default function Footer() {
           <span>Stats</span>
         </a>
       </footer>
+      <Footer />
     </>
   );
 }
