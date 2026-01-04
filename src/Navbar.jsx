@@ -1,4 +1,10 @@
-import { FaUser, FaChartBar, FaUsers, FaBlog, FaFolderOpen } from "react-icons/fa";
+import {
+  FaUser,
+  FaChartBar,
+  FaUsers,
+  FaBlog,
+  FaFolderOpen,
+} from "react-icons/fa";
 
 export default function Navbar() {
   const path = window.location.pathname;
@@ -9,36 +15,38 @@ export default function Navbar() {
     trail = [{ label: "Profile", icon: <FaUser /> }];
   }
 
-  if (path === "/stats") {
+  else if (path === "/stats") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
       { label: "Stats", icon: <FaChartBar /> },
     ];
   }
 
-  if (path === "/socials") {
+  else if (path === "/socials") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
       { label: "Socials", icon: <FaUsers /> },
     ];
   }
 
-  if (path === "/blog") {
+  else if (path === "/blog") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
       { label: "Blog", icon: <FaBlog /> },
     ];
   }
 
-  if (path === "/blog/:slug") {
+  else if (path.startsWith("/blog/")) {
+    const slug = path.replace("/blog/", "").replace(/-/g, " ");
+
     trail = [
       { label: "Profile", icon: <FaUser /> },
       { label: "Blog", icon: <FaBlog /> },
-      { label: ":slug", icon: <FaBlog /> },
+      { label: slug, icon: <FaBlog /> },
     ];
   }
 
-  if (path === "/project") {
+  else if (path === "/project") {
     trail = [
       { label: "Profile", icon: <FaUser /> },
       { label: "Project", icon: <FaFolderOpen /> },
@@ -62,25 +70,27 @@ export default function Navbar() {
           font-size: 14px;
           color: #fff;
           opacity: 0.9;
+          flex-wrap: wrap;
         }
 
-        .brand,
-        .pipe,
-        .crumb,
-        .arrow {
-          display: flex;
-          align-items: center;
+        .brand {
+          margin-right: 6px;
+          font-weight: 600;
         }
 
-        .brand { margin-right: 6px; font-weight: 600; }
-        .pipe { margin-right: 6px; opacity: 0.6; }
+        .pipe {
+          margin-right: 6px;
+          opacity: 0.6;
+        }
 
         .crumb {
-          gap: 4px; 
+          display: flex;
+          align-items: center;
+          gap: 4px;
         }
 
         .arrow {
-          margin: 0 6px; 
+          margin: 0 6px;
           opacity: 0.5;
         }
 
@@ -97,7 +107,9 @@ export default function Navbar() {
           {trail.map((item, i) => (
             <span key={i} className="crumb">
               {item.icon}
-              <span>{item.label}</span>
+              <span style={{ textTransform: "capitalize" }}>
+                {item.label}
+              </span>
               {i < trail.length - 1 && (
                 <span className="arrow">&gt;</span>
               )}
