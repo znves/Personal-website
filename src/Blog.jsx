@@ -3,7 +3,7 @@ import { MdVerified } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AdBanner from "./AdBanner";
+import AdBanner from "../AdBanner";
 import blogData from "../data/blog.json";
 
 /* slug generator */
