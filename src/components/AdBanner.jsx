@@ -2,19 +2,19 @@ import { useEffect, useRef, useState } from "react";
 
 export default function AdBanner() {
   const adRef = useRef(null);
-  const [show, setShow] = useState(false);
+  const [loadAd, setLoadAd] = useState(false);
 
-  // delay 3 detik
+  // delay IKLAN 3 detik (border tetap tampil)
   useEffect(() => {
-    const t = setTimeout(() => setShow(true), 3000);
+    const t = setTimeout(() => setLoadAd(true), 3000);
     return () => clearTimeout(t);
   }, []);
 
-  // inject ads (anti double run)
+  // inject script adsterra (anti strict mode)
   useEffect(() => {
-    if (!show || !adRef.current) return;
-    if (window.__ADSTERRA_DONE__) return;
-    window.__ADSTERRA_DONE__ = true;
+    if (!loadAd || !adRef.current) return;
+    if (window.__ADSTERRA_LOADED__) return;
+    window.__ADSTERRA_LOADED__ = true;
 
     window.atOptions = {
       key: "25606089ca02f01002442e7b9fe6935d",
@@ -30,29 +30,29 @@ export default function AdBanner() {
     s.async = true;
 
     adRef.current.appendChild(s);
-  }, [show]);
-
-  if (!show) return null;
+  }, [loadAd]);
 
   return (
     <>
       <style>{`
         .ad-box {
           margin: 32px auto;
-          padding: 12px 8px 8px;
-          max-width: 360px;
+          width: 320px;
+          height: 50px;
           background: #050505;
           border: 1px solid rgba(255,255,255,0.2);
           border-radius: 14px;
           position: relative;
           display: flex;
+          align-items: center;
           justify-content: center;
+          overflow: hidden;
         }
 
         .ad-label {
           position: absolute;
           top: -10px;
-          left: 14px;
+          left: 12px;
           font-size: 11px;
           padding: 2px 8px;
           background: #050505;
@@ -60,6 +60,15 @@ export default function AdBanner() {
           border: 1px solid rgba(255,255,255,0.2);
           border-radius: 999px;
           user-select: none;
+          z-index: 2;
+        }
+
+        .ad-slot {
+          width: 320px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .ad-box iframe {
@@ -68,8 +77,8 @@ export default function AdBanner() {
       `}</style>
 
       <div className="ad-box">
-        <span className="ad-label">Advertisement</span>
-        <div ref={adRef} />
+        <span className="ad-label">Advertisement from Adsterra</span>
+        <div className="ad-slot" ref={adRef} />
       </div>
     </>
   );
