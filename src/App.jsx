@@ -50,7 +50,7 @@ export default function AboutMe() {
         }
 
         .verified {
-          color: #1d9bf0;
+          color: #ffffff;
           font-size: 20px;
         }
 
