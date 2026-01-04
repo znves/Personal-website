@@ -241,7 +241,6 @@ export default function Blog() {
                 <img src="/profile.webp" />
                 <span>Aprilio</span>
                 <MdVerified />
-                <span className="detail-date">{formatDate(blog.date)}</span>
                 <button onClick={() => setShowShare(true)}>
                   <FaShareAlt />
                 </button>
