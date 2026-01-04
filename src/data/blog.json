@@ -1,27 +1,58 @@
 [
   {
-    "title": "Cara Membuat Website Personal",
-    "content": "Ini adalah isi blog pertama.\n\nGunakan \\n\\n untuk paragraf baru.\nDan \\n untuk baris baru.",
-    "image": "/blog1.webp"
-  },
-  {
     "title": "Belajar React dari Nol",
-    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
-    "image": "/blog2.webp"
+    "image": "/blog/react.webp",
+    "content": "Panduan lengkap belajar React untuk pemula.",
+    "lang": "ID",
+    "tag": "Tutorial",
+    "date": "2025-01-01"
   },
   {
-    "title": "test3",
-    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
-    "image": "/blog3.webp"
+    "title": "Understanding JavaScript Closures",
+    "image": "/blog/js.webp",
+    "content": "Deep dive into closures and how they work.",
+    "lang": "EN",
+    "tag": "JavaScript",
+    "date": "2025-01-02"
   },
   {
-    "title": "test4",
-    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
-    "image": "/blog4.webp"
+    "title": "Cara Membuat Blog dengan React",
+    "image": "/blog/blog.webp",
+    "content": "Langkah-langkah membuat blog modern.",
+    "lang": "ID",
+    "tag": "Project",
+    "date": "2025-01-03"
   },
   {
-    "title": "test5",
-    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
-    "image": "/blog5.webp"
+    "title": "Why You Should Learn TypeScript",
+    "image": "/blog/ts.webp",
+    "content": "TypeScript advantages for large projects.",
+    "lang": "EN",
+    "tag": "Opinion",
+    "date": "2025-01-04"
+  },
+  {
+    "title": "Dark Mode UI Design Tips",
+    "image": "/blog/ui.webp",
+    "content": "Best practices designing dark UI.",
+    "lang": "EN",
+    "tag": "UI/UX",
+    "date": "2025-01-05"
+  },
+  {
+    "title": "Tips Deploy React ke Vercel",
+    "image": "/blog/vercel.webp",
+    "content": "Cara cepat dan aman deploy React.",
+    "lang": "ID",
+    "tag": "Deployment",
+    "date": "2025-01-06"
+  },
+  {
+    "title": "Simple SEO untuk Website React",
+    "image": "/blog/seo.webp",
+    "content": "Optimasi SEO dasar untuk React.",
+    "lang": "ID",
+    "tag": "SEO",
+    "date": "2025-01-07"
   }
 ]
