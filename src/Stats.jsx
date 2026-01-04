@@ -312,13 +312,32 @@ export default function GitHubStats() {
                       className="repo-card"
                     >
                       <div className="repo-meta">
-                        <span><FaBalanceScale /> {repo.license?.spdx_id || "No license"}</span>
-                        <span><FaStar /> {repo.stargazers_count}</span>
-                        <span><FaCodeBranch /> {repo.forks_count}</span>
-                        <span><FaEye /> {repo.watchers_count}</span>
-                        <span><FaTag /> {repo.open_issues_count}</span>
-                        <span><FaClock /> {new Date(repo.updated_at).toLocaleDateString()}</span>
-                      </div>
+                         <span>
+                           <FaBalanceScale style={{ color: "#ffffff" }} />{" "}
+                           {repo.license?.spdx_id || "No license"}
+                         </span>
+
+                         <span>
+                           <FaStar style={{ color: "#eab308" }} /> {repo.stargazers_count}
+                         </span>
+
+                         <span>
+                           <FaCodeBranch style={{ color: "#1e3a8a" }} /> {repo.forks_count}
+                         </span>
+
+                         <span>
+                           <FaEye style={{ color: "#22c55e" }} /> {repo.watchers_count}
+                         </span>
+
+                         <span>
+                           <FaTag style={{ color: "#a855f7" }} /> {repo.open_issues_count}
+                         </span>
+
+                         <span>
+                           <FaClock style={{ color: "#ffffff" }} />{" "}
+                           {new Date(repo.updated_at).toLocaleDateString()}
+                         </span>
+                       </div>
 
                       <div className="repo-name">{repo.name}</div>
                       {repo.description && (
