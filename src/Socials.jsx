@@ -24,10 +24,8 @@ export default function Contact() {
         }
 
         .contact-page {
-         min-height: calc(100vh - 120px);
-         padding: 10px 16px 24px;
-         }
-
+        padding: 10px 16px 24px;
+        }
 
         .contact-container {
           max-width: 720px;
