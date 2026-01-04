@@ -75,12 +75,15 @@ export default function Footer() {
         </a>
 
         <a
-          href="/blog"
-          className={`footer-item ${path === "/blog" ? "active" : ""}`}
+         href="/blog"
+         className={`footer-item ${
+         path === "/blog" || path.startsWith("/blog/") ? "active" : ""
+          }`}
         >
-          <FaBlog />
-          <span>Blog</span>
+         <FaBlog />
+         <span>Blog</span>
         </a>
+
 
         <a
           href="/"
