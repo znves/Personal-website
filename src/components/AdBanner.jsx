@@ -45,7 +45,7 @@ export default function AdBanner() {
           display: inline-block;
           font-size: 11px;
           color: #aaa;
-          padding: 4px 10px;
+          padding: 0px 10px;
           border: 1px solid rgba(255,255,255,0.2);
           border-bottom: none;
           border-radius: 10px 10px 0 0;
