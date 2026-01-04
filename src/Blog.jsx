@@ -3,8 +3,9 @@ import { MdVerified } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AdBanner from "../AdBanner";
-import blogData from "../data/blog.json";
+import AdBanner from "./components/AdBanner";
+import FooterSpacer from "./components/FooterSpacer";
+import blogData from "./data/blog.json";
 
 /* slug generator */
 const slugify = text =>
