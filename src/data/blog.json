@@ -8,5 +8,20 @@
     "title": "Belajar React dari Nol",
     "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
     "image": "/blog2.webp"
+  },
+  {
+    "title": "test3",
+    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
+    "image": "/blog3.webp"
+  },
+  {
+    "title": "test4",
+    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
+    "image": "/blog4.webp"
+  }
+  {
+    "title": "test5",
+    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
+    "image": "/blog5.webp"
   }
 ]
