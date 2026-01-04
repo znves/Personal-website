@@ -8,6 +8,7 @@ import {
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import AdBanner from "./components/AdBanner";
+import FooterSpacer from "./components/FooterSpacer";
 
 export default function Contact() {
   return (
@@ -213,6 +214,7 @@ export default function Contact() {
       </div>
 
       <AdBanner />
+      <FooterSpacer />
       <Footer />
     </>
   );
