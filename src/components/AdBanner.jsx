@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function AdBanner() {
-  const ref = useRef(null);
+  const adRef = useRef(null);
   const [show, setShow] = useState(false);
 
+  // delay 3 detik
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 3000); // delay 3 detik
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setShow(true), 3000);
+    return () => clearTimeout(t);
   }, []);
 
+  // inject ads (anti double run)
   useEffect(() => {
-    if (!show || !ref.current || ref.current.childNodes.length) return;
+    if (!show || !adRef.current) return;
+    if (window.__ADSTERRA_DONE__) return;
+    window.__ADSTERRA_DONE__ = true;
 
     window.atOptions = {
       key: "25606089ca02f01002442e7b9fe6935d",
@@ -25,7 +29,7 @@ export default function AdBanner() {
       "https://www.highperformanceformat.com/25606089ca02f01002442e7b9fe6935d/invoke.js";
     s.async = true;
 
-    ref.current.appendChild(s);
+    adRef.current.appendChild(s);
   }, [show]);
 
   if (!show) return null;
@@ -33,16 +37,16 @@ export default function AdBanner() {
   return (
     <>
       <style>{`
-        .ad-wrap {
-          position: relative;
+        .ad-box {
           margin: 32px auto;
-          padding: 14px 10px 10px;
+          padding: 12px 8px 8px;
           max-width: 360px;
+          background: #050505;
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 14px;
+          position: relative;
           display: flex;
           justify-content: center;
-          background: #050505;
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 14px;
         }
 
         .ad-label {
@@ -53,20 +57,19 @@ export default function AdBanner() {
           padding: 2px 8px;
           background: #050505;
           color: #aaa;
-          border: 1px solid rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.2);
           border-radius: 999px;
           user-select: none;
         }
 
-        .ad-wrap iframe {
+        .ad-box iframe {
           border: none;
-          display: block;
         }
       `}</style>
 
-      <div className="ad-wrap">
+      <div className="ad-box">
         <span className="ad-label">Advertisement</span>
-        <div ref={ref} />
+        <div ref={adRef} />
       </div>
     </>
   );
