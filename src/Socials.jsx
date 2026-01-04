@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import AdBanner from "./components/AdBanner";
 
 export default function Contact() {
   return (
@@ -211,6 +212,7 @@ export default function Contact() {
         </div>
       </div>
 
+      <AdBanner />
       <Footer />
     </>
   );
