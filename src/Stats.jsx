@@ -111,7 +111,7 @@ export default function GitHubStats() {
         }
 
         .verified {
-          color: #3b82f6;
+          color: #ffffff;
           font-size: 16px;
         }
 
