@@ -24,9 +24,10 @@ export default function Contact() {
         }
 
         .contact-page {
-          min-height: 100vh;
-          padding: 10px 16px 120px;
-        }
+         min-height: calc(100vh - 120px);
+         padding: 10px 16px 24px;
+         }
+
 
         .contact-container {
           max-width: 720px;
