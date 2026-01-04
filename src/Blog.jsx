@@ -18,6 +18,13 @@ import blogData from "./data/blog.json";
 const slugify = text =>
   text.toLowerCase().replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 
+const formatDate = date =>
+  new Date(date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
 export default function Blog() {
   const { slug } = useParams();
   const [query, setQuery] = useState("");
@@ -100,27 +107,53 @@ export default function Blog() {
           border-color:#3b82f6;
         }
 
+        .blog-meta {
+          display:flex;
+          align-items:center;
+          gap:10px;
+          margin-top:10px;
+          font-size:12px;
+          opacity:.85;
+          flex-wrap:wrap;
+        }
+
+        .blog-tag {
+          padding:4px 10px;
+          border-radius:999px;
+          border:1px solid rgba(255,255,255,.35);
+        }
+
+        .blog-divider {
+          width:1px;
+          height:14px;
+          background:rgba(255,255,255,.35);
+        }
+
+        .blog-date { opacity:.7 }
+
         .not-found {
           text-align:center;
           opacity:.6;
           padding:40px 0;
         }
 
-        /* DETAIL */
         .detail-title { font-size:24px; font-weight:700 }
         .detail-line {
           height:2px;
           background:#3b82f6;
-          margin:6px 0 20px;
+          margin:6px 0 10px;
         }
 
         .detail-author {
-          display:flex; align-items:center;
-          gap:8px; margin-bottom:18px;
+          display:flex;
+          align-items:center;
+          gap:8px;
+          margin:18px 0;
         }
 
         .detail-author img {
-          width:32px; height:32px;
+          width:32px;
+          height:32px;
           border-radius:50%;
         }
 
@@ -131,6 +164,11 @@ export default function Blog() {
           color:#fff;
           cursor:pointer;
           font-size:18px;
+        }
+
+        .detail-date {
+          font-size:12px;
+          opacity:.7;
         }
 
         .detail-image {
@@ -153,7 +191,6 @@ export default function Blog() {
           text-decoration:none;
         }
 
-        /* SHARE POPUP */
         .share-popup {
           position:fixed;
           inset:0;
@@ -191,17 +228,26 @@ export default function Blog() {
               <div className="detail-title">{blog.title}</div>
               <div className="detail-line" />
 
+              <div className="blog-meta">
+                <div className="blog-tag">
+                  {blog.lang === "ID" ? "ID 🇮🇩" : "EN 🇬🇧"}
+                </div>
+                <div className="blog-divider" />
+                <div className="blog-tag">{blog.tag}</div>
+                <span className="blog-date">{formatDate(blog.date)}</span>
+              </div>
+
               <div className="detail-author">
                 <img src="/profile.webp" />
                 <span>Aprilio</span>
                 <MdVerified />
+                <span className="detail-date">{formatDate(blog.date)}</span>
                 <button onClick={() => setShowShare(true)}>
                   <FaShareAlt />
                 </button>
               </div>
 
               <img src={blog.image} className="detail-image" />
-
               <div className="detail-content">{blog.content}</div>
 
               <Link to="/blog" className="back-btn">
@@ -235,13 +281,22 @@ export default function Blog() {
                       to={`/blog/${slugify(b.title)}`}
                       className="blog-card"
                     >
-                      {b.title}
+                      <div>{b.title}</div>
+
+                      <div className="blog-meta">
+                        <div className="blog-tag">
+                          {b.lang === "ID" ? "ID 🇮🇩" : "EN 🇬🇧"}
+                        </div>
+                        <div className="blog-divider" />
+                        <div className="blog-tag">{b.tag}</div>
+                        <span className="blog-date">
+                          {formatDate(b.date)}
+                        </span>
+                      </div>
                     </Link>
                   ))
                 ) : (
-                  <div className="not-found">
-                    Blog not found
-                  </div>
+                  <div className="not-found">Blog not found</div>
                 )}
               </div>
             </>
