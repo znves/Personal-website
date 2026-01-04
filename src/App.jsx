@@ -3,6 +3,7 @@ import { MdVerified } from "react-icons/md";
 import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import AdBanner from "./components/AdBanner";
 
 export default function AboutMe() {
   return (
@@ -237,6 +238,7 @@ export default function AboutMe() {
             </div>
           </div>
 
+          <AdBanner />
           <Footer />
 
         </div>
