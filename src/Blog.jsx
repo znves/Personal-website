@@ -193,7 +193,7 @@ export default function Blog() {
 
               <div className="detail-author">
                 <img src="/profile.webp" />
-                <span>Vestionz</span>
+                <span>Aprilio</span>
                 <MdVerified />
                 <button onClick={() => setShowShare(true)}>
                   <FaShareAlt />
