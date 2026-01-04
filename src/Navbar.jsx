@@ -1,4 +1,4 @@
-import { FaUser, FaChartBar, FaUsers } from "react-icons/fa";
+import { FaUser, FaChartBar, FaUsers, FaBlog } from "react-icons/fa";
 
 export default function Navbar() {
   const path = window.location.pathname;
@@ -20,6 +20,21 @@ export default function Navbar() {
     trail = [
       { label: "Profile", icon: <FaUser /> },
       { label: "Socials", icon: <FaUsers /> },
+    ];
+  }
+
+  if (path === "/blog") {
+    trail = [
+      { label: "Profile", icon: <FaUser /> },
+      { label: "Blog", icon: <FaBlog /> },
+    ];
+  }
+
+  if (path === "/blog/:slug") {
+    trail = [
+      { label: "Profile", icon: <FaUser /> },
+      { label: "Blog", icon: <FaBlog /> },
+      { label: ":slug", icon: <FaBlog /> },
     ];
   }
 
