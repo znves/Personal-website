@@ -7,7 +7,25 @@ import Socials from "./Socials";
 import Stats from "./Stats";
 import Blog from "./Blog";
 import NotFound from "./NotFound";
-import "./index.js";
+
+const clickSound = new Audio("/click.ogg");
+clickSound.volume = 0.3;
+
+let unlocked = false;
+
+document.addEventListener("click", () => {
+  if (!unlocked) {
+    clickSound.play().then(() => {
+      clickSound.pause();
+      clickSound.currentTime = 0;
+      unlocked = true;
+    }).catch(() => {});
+    return;
+  }
+
+  clickSound.currentTime = 0;
+  clickSound.play().catch(() => {});
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
