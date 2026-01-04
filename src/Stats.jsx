@@ -45,9 +45,8 @@ export default function GitHubStats() {
           font-size: 15px;
         }
 
-        .github-page {
-          min-height: 100vh;
-          padding: 10px 15px 120px;
+         .github-page {
+         padding: 10px 15px 24px;
         }
 
         .github-container {
