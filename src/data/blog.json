@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Cara Membuat Website Personal",
+    "content": "Ini adalah isi blog pertama.\n\nGunakan \\n\\n untuk paragraf baru.\nDan \\n untuk baris baru.",
+    "image": "/blog1.webp"
+  },
+  {
+    "title": "Belajar React dari Nol",
+    "content": "React itu menyenangkan.\n\nKomponen, state, dan props.",
+    "image": "/blog2.webp"
+  }
+]
