@@ -15,6 +15,7 @@ import Footer from "./Footer";
 import AdBanner from "./components/AdBanner";
 import AdBannerr from "./components/AdBannerr";
 import FooterSpacer from "./components/FooterSpacer";
+import AdBannerrr from "./components/AdBannerrr";
 import blogData from "./data/blog.json";
 
 const slugify = text =>
@@ -364,6 +365,7 @@ export default function Blog() {
 
       <AdBanner />
       <AdBannerr />
+      <AdBannerrr />
       <FooterSpacer />
       <Footer />
 
