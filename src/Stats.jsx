@@ -303,6 +303,8 @@ export default function GitHubStats() {
                 <FaCode /> Public Projects
               </div>
 
+              <AdBannerrr />
+              
               {repos.length > 0 ? (
                 <div className="repo-list">
                   {repos.map(repo => (
@@ -360,7 +362,6 @@ export default function GitHubStats() {
 
       <AdBanner />
       <AdBannerr />
-      <AdBannerrr />
       <FooterSpacer />
       <Footer />
     </>
