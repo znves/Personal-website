@@ -17,6 +17,7 @@ import {
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AdBanner from "./components/AdBanner";
+import AdBannerr from "./components/AdBannerr";
 import FooterSpacer from "./components/FooterSpacer";
 
 export default function GitHubStats() {
@@ -357,6 +358,7 @@ export default function GitHubStats() {
       </div>
 
       <AdBanner />
+      <AdBannerr />
       <FooterSpacer />
       <Footer />
     </>
