@@ -84,7 +84,7 @@ export default function AdBannerSide() {
       `}</style>
 
       <div className="ad-wrapper-160">
-        <div className="ad-label">Advertisement</div>
+        <div className="ad-label">Advertisement from Adsterra</div>
 
         <div className="ad-box-160">
           <div className="ad-slot-160" ref={adRef} />
