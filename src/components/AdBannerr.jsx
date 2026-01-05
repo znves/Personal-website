@@ -1,51 +1,58 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function AdBanner() {
+export default function AdBannerContent() {
   const adRef = useRef(null);
   const [loadAd, setLoadAd] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setLoadAd(true), 1000);
+    const t = setTimeout(() => setLoadAd(true), 1800);
     return () => clearTimeout(t);
   }, []);
 
-  // inject script adsterra (safe for React StrictMode)
   useEffect(() => {
     if (!loadAd || !adRef.current) return;
-    if (window.__ADSTERRA_LOADED__) return;
-    window.__ADSTERRA_LOADED__ = true;
+    if (window.__ADSTERRA_300x250__) return;
+    window.__ADSTERRA_300x250__ = true;
 
     window.atOptions = {
-      key: "25606089ca02f01002442e7b9fe6935d",
+      key: "088de0ae32b436f1a0110168f4bc5a4f",
       format: "iframe",
-      height: 50,
-      width: 320,
+      height: 250,
+      width: 300,
       params: {}
     };
 
     const s = document.createElement("script");
     s.src =
-      "https://www.highperformanceformat.com/25606089ca02f01002442e7b9fe6935d/invoke.js";
+      "https://www.highperformanceformat.com/088de0ae32b436f1a0110168f4bc5a4f/invoke.js";
     s.async = true;
 
     adRef.current.appendChild(s);
+
+    // cleanup GLOBAL config (INI KUNCI FIX)
+    const cleanup = setTimeout(() => {
+      try {
+        delete window.atOptions;
+      } catch {}
+    }, 1500);
+
+    return () => clearTimeout(cleanup);
   }, [loadAd]);
 
   return (
     <>
       <style>{`
-        .ad-wrapper {
-          width: 320px;
-          margin: 0 auto;
+        .ad-wrapper-300 {
+          width: 300px;
+          margin: 24px auto;
           user-select: none;
         }
 
-        /* LABEL MENYATU DENGAN BORDER */
         .ad-label {
           display: inline-block;
           font-size: 11px;
           color: #aaa;
-          padding: 0px 10px;
+          padding: 0 10px;
           border: 1px solid rgba(255,255,255,0.2);
           border-bottom: none;
           border-radius: 10px 10px 0 0;
@@ -53,9 +60,9 @@ export default function AdBanner() {
           margin-left: 12px;
         }
 
-        .ad-box {
-          width: 320px;
-          height: 50px;
+        .ad-box-300 {
+          width: 300px;
+          height: 250px;
           background: #050505;
           border: 1px solid rgba(255,255,255,0.2);
           border-radius: 14px;
@@ -66,21 +73,20 @@ export default function AdBanner() {
           justify-content: center;
         }
 
-        .ad-slot {
-          width: 320px;
-          height: 50px;
+        .ad-slot-300 {
+          width: 300px;
+          height: 250px;
         }
 
-        .ad-box iframe {
+        .ad-box-300 iframe {
           border: none;
         }
       `}</style>
 
-      <div className="ad-wrapper">
-        <div className="ad-label">Advertisement from Adsterra</div>
-
-        <div className="ad-box">
-          <div className="ad-slot" ref={adRef} />
+      <div className="ad-wrapper-300">
+        <div className="ad-label">Advertisement</div>
+        <div className="ad-box-300">
+          <div className="ad-slot-300" ref={adRef} />
         </div>
       </div>
     </>
