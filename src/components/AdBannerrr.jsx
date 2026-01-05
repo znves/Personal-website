@@ -1,19 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function AdBannerSide() {
+export default function AdSidebar() {
   const adRef = useRef(null);
-  const [loadAd, setLoadAd] = useState(false);
+  const [canShow, setCanShow] = useState(false);
 
+  // 1️⃣ Desktop only (block mobile totally)
   useEffect(() => {
-    const t = setTimeout(() => setLoadAd(true), 2200); // delay paling akhir
-    return () => clearTimeout(t);
+    if (typeof window === "undefined") return;
+    if (window.innerWidth >= 1024) {
+      setCanShow(true);
+    }
   }, []);
 
+  // 2️⃣ Load Adsterra (safe for SPA & StrictMode)
   useEffect(() => {
-    if (!loadAd || !adRef.current) return;
+    if (!canShow || !adRef.current) return;
     if (window.__ADSTERRA_160x300__) return;
     window.__ADSTERRA_160x300__ = true;
 
+    // set GLOBAL config (Adsterra requirement)
     window.atOptions = {
       key: "170efe53479927171645a301d1c7a00a",
       format: "iframe",
@@ -29,7 +34,7 @@ export default function AdBannerSide() {
 
     adRef.current.appendChild(s);
 
-    // 🧹 cleanup global config (WAJIB)
+    // 3️⃣ Cleanup global config (ANTI BLANK)
     const cleanup = setTimeout(() => {
       try {
         delete window.atOptions;
@@ -37,17 +42,24 @@ export default function AdBannerSide() {
     }, 1500);
 
     return () => clearTimeout(cleanup);
-  }, [loadAd]);
+  }, [canShow]);
+
+  // 🚫 Mobile = render nothing + no request
+  if (!canShow) return null;
 
   return (
     <>
       <style>{`
-        .ad-wrapper-160 {
+        /* SIDEBAR + STICKY */
+        .ad-sidebar {
+          position: sticky;
+          top: 90px; /* sesuaikan tinggi navbar */
           width: 160px;
-          margin: 24px auto;
+          height: fit-content;
           user-select: none;
         }
 
+        /* LABEL */
         .ad-label {
           display: inline-block;
           font-size: 11px;
@@ -60,7 +72,8 @@ export default function AdBannerSide() {
           margin-left: 8px;
         }
 
-        .ad-box-160 {
+        /* BOX */
+        .ad-box {
           width: 160px;
           height: 300px;
           background: #050505;
@@ -73,23 +86,24 @@ export default function AdBannerSide() {
           justify-content: center;
         }
 
-        .ad-slot-160 {
+        /* SLOT */
+        .ad-slot {
           width: 160px;
           height: 300px;
         }
 
-        .ad-box-160 iframe {
+        .ad-box iframe {
           border: none;
         }
       `}</style>
 
-      <div className="ad-wrapper-160">
+      <aside className="ad-sidebar">
         <div className="ad-label">Advertisement from Adsterra</div>
 
-        <div className="ad-box-160">
-          <div className="ad-slot-160" ref={adRef} />
+        <div className="ad-box">
+          <div className="ad-slot" ref={adRef} />
         </div>
-      </div>
+      </aside>
     </>
   );
 }
