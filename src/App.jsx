@@ -3,7 +3,8 @@ import { MdVerified } from "react-icons/md";
 import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import AdBanner2 from "./components/AdBanner2";
+import AdBanner from "./components/AdBanner";
+import AdBannerr from "./components/AdBannerr";
 
 export default function AboutMe() {
   return (
@@ -238,7 +239,8 @@ export default function AboutMe() {
             </div>
           </div>
 
-          <AdBanned2 />
+          <AdBanner />
+          <AdBannerr />
           <Footer />
 
         </div>
