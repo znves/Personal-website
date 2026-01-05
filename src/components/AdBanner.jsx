@@ -1,19 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function AdBanner() {
+export default function AdBannerTop() {
   const adRef = useRef(null);
   const [loadAd, setLoadAd] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setLoadAd(true), 1000);
+    const t = setTimeout(() => setLoadAd(true), 800);
     return () => clearTimeout(t);
   }, []);
 
-  // inject script adsterra (safe for React StrictMode)
   useEffect(() => {
     if (!loadAd || !adRef.current) return;
-    if (window.__ADSTERRA_LOADED__) return;
-    window.__ADSTERRA_LOADED__ = true;
+    if (window.__ADSTERRA_320x50__) return;
+    window.__ADSTERRA_320x50__ = true;
 
     window.atOptions = {
       key: "25606089ca02f01002442e7b9fe6935d",
@@ -29,23 +28,31 @@ export default function AdBanner() {
     s.async = true;
 
     adRef.current.appendChild(s);
+
+    // cleanup GLOBAL config (WAJIB)
+    const cleanup = setTimeout(() => {
+      try {
+        delete window.atOptions;
+      } catch {}
+    }, 1500);
+
+    return () => clearTimeout(cleanup);
   }, [loadAd]);
 
   return (
     <>
       <style>{`
-        .ad-wrapper {
+        .ad-wrapper-320 {
           width: 320px;
           margin: 0 auto;
           user-select: none;
         }
 
-        /* LABEL MENYATU DENGAN BORDER */
         .ad-label {
           display: inline-block;
           font-size: 11px;
           color: #aaa;
-          padding: 0px 10px;
+          padding: 0 10px;
           border: 1px solid rgba(255,255,255,0.2);
           border-bottom: none;
           border-radius: 10px 10px 0 0;
@@ -53,7 +60,7 @@ export default function AdBanner() {
           margin-left: 12px;
         }
 
-        .ad-box {
+        .ad-box-320 {
           width: 320px;
           height: 50px;
           background: #050505;
@@ -66,21 +73,20 @@ export default function AdBanner() {
           justify-content: center;
         }
 
-        .ad-slot {
+        .ad-slot-320 {
           width: 320px;
           height: 50px;
         }
 
-        .ad-box iframe {
+        .ad-box-320 iframe {
           border: none;
         }
       `}</style>
 
-      <div className="ad-wrapper">
-        <div className="ad-label">Advertisement from Adsterra</div>
-
-        <div className="ad-box">
-          <div className="ad-slot" ref={adRef} />
+      <div className="ad-wrapper-320">
+        <div className="ad-label">Advertisement</div>
+        <div className="ad-box-320">
+          <div className="ad-slot-320" ref={adRef} />
         </div>
       </div>
     </>
