@@ -1,24 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function AdSidebar() {
-  const adRef = useRef(null);
+export default function AdDualEdge() {
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
   const [canShow, setCanShow] = useState(false);
 
-  // 1️⃣ Desktop only (block mobile totally)
+  // desktop only
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1280) {
       setCanShow(true);
+
+      // geser konten biar ga ketutup
+      document.body.style.paddingLeft = "180px";
+      document.body.style.paddingRight = "180px";
     }
+
+    return () => {
+      document.body.style.paddingLeft = "";
+      document.body.style.paddingRight = "";
+    };
   }, []);
 
-  // 2️⃣ Load Adsterra (safe for SPA & StrictMode)
+  // load LEFT ad
   useEffect(() => {
-    if (!canShow || !adRef.current) return;
-    if (window.__ADSTERRA_160x300__) return;
-    window.__ADSTERRA_160x300__ = true;
+    if (!canShow || !leftRef.current) return;
+    if (window.__ADSTERRA_LEFT__) return;
+    window.__ADSTERRA_LEFT__ = true;
 
-    // set GLOBAL config (Adsterra requirement)
     window.atOptions = {
       key: "170efe53479927171645a301d1c7a00a",
       format: "iframe",
@@ -32,64 +40,80 @@ export default function AdSidebar() {
       "https://www.highperformanceformat.com/170efe53479927171645a301d1c7a00a/invoke.js";
     s.async = true;
 
-    adRef.current.appendChild(s);
+    leftRef.current.appendChild(s);
 
-    // 3️⃣ Cleanup global config (ANTI BLANK)
-    const cleanup = setTimeout(() => {
+    setTimeout(() => {
       try {
         delete window.atOptions;
       } catch {}
     }, 1500);
-
-    return () => clearTimeout(cleanup);
   }, [canShow]);
 
-  // 🚫 Mobile = render nothing + no request
+  // load RIGHT ad (delay dikit)
+  useEffect(() => {
+    if (!canShow || !rightRef.current) return;
+    if (window.__ADSTERRA_RIGHT__) return;
+    window.__ADSTERRA_RIGHT__ = true;
+
+    setTimeout(() => {
+      window.atOptions = {
+        key: "170efe53479927171645a301d1c7a00a",
+        format: "iframe",
+        height: 300,
+        width: 160,
+        params: {}
+      };
+
+      const s = document.createElement("script");
+      s.src =
+        "https://www.highperformanceformat.com/170efe53479927171645a301d1c7a00a/invoke.js";
+      s.async = true;
+
+      rightRef.current.appendChild(s);
+
+      setTimeout(() => {
+        try {
+          delete window.atOptions;
+        } catch {}
+      }, 1500);
+    }, 600);
+  }, [canShow]);
+
+  // mobile = nothing
   if (!canShow) return null;
 
   return (
     <>
       <style>{`
-        /* SIDEBAR + STICKY */
-        .ad-sidebar {
-          position: sticky;
-          top: 90px; /* sesuaikan tinggi navbar */
+        .ad-edge {
+          position: fixed;
+          top: 90px;
           width: 160px;
-          height: fit-content;
+          z-index: 10;
           user-select: none;
         }
 
-        /* LABEL */
-        .ad-label {
-          display: inline-block;
-          font-size: 11px;
-          color: #aaa;
-          padding: 0 8px;
-          border: 1px solid rgba(255,255,255,0.2);
-          border-bottom: none;
-          border-radius: 10px 10px 0 0;
-          background: #050505;
-          margin-left: 8px;
+        .ad-left {
+          left: 0;
         }
 
-        /* BOX */
+        .ad-right {
+          right: 0;
+        }
+
+        .ad-label {
+          font-size: 11px;
+          color: #aaa;
+          margin: 0 0 4px 8px;
+        }
+
         .ad-box {
           width: 160px;
           height: 300px;
           background: #050505;
           border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 14px;
-          border-top-left-radius: 0;
+          border-radius: 12px;
           overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        /* SLOT */
-        .ad-slot {
-          width: 160px;
-          height: 300px;
         }
 
         .ad-box iframe {
@@ -97,13 +121,21 @@ export default function AdSidebar() {
         }
       `}</style>
 
-      <aside className="ad-sidebar">
+      {/* LEFT */}
+      <div className="ad-edge ad-left">
         <div className="ad-label">Advertisement from Adsterra</div>
-
         <div className="ad-box">
-          <div className="ad-slot" ref={adRef} />
+          <div ref={leftRef} />
         </div>
-      </aside>
+      </div>
+
+      {/* RIGHT */}
+      <div className="ad-edge ad-right">
+        <div className="ad-label">Advertisement from Adsterra</div>
+        <div className="ad-box">
+          <div ref={rightRef} />
+        </div>
+      </div>
     </>
   );
 }
