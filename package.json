@@ -29,7 +29,8 @@
     "react-markdown": "^8.0.7",
     "framer-motion": "^10.12.16",
     "@monaco-editor/react": "4.6.0",
-    "monaco-editor": "0.45.0"
+    "monaco-editor": "0.45.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
