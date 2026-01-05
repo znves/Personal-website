@@ -196,6 +196,8 @@ export default function Contact() {
               </div>
             </a>
 
+            <AdBannerrr />
+            
             <a
               href="https://instagram.com/akbaraprilioo"
               target="_blank"
@@ -216,7 +218,6 @@ export default function Contact() {
 
       <AdBanner />
       <AdBannerr />
-      <AdBannerrr />
       <FooterSpacer />
       <Footer />
     </>
