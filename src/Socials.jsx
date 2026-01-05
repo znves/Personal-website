@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import AdBanner from "./components/AdBanner";
 import AdBannerr from "./components/AdBannerr";
+import AdBannerrr from "./components/AdBannerrr";
 import FooterSpacer from "./components/FooterSpacer";
 
 export default function Contact() {
@@ -215,6 +216,7 @@ export default function Contact() {
 
       <AdBanner />
       <AdBannerr />
+      <AdBannerrr />
       <FooterSpacer />
       <Footer />
     </>
