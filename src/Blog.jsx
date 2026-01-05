@@ -9,6 +9,7 @@ import {
 import { MdVerified } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
+import { Helmet } from "react-helmet"; // ✅ TAMBAHAN (TIDAK HAPUS APA2)
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AdBanner from "./components/AdBanner";
@@ -43,6 +44,62 @@ export default function Blog() {
 
   return (
     <>
+      {/* ===================== TAMBAHAN SEO (GA NGUBAH LOGIC) ===================== */}
+      <Helmet>
+        <title>
+          {blog ? blog.title : "Blog – Articles, Notes, and Stories"}
+        </title>
+
+        <meta
+          name="description"
+          content={
+            blog
+              ? blog.description
+              : "Articles, notes, and stories from this blog."
+          }
+        />
+
+        {blog && (
+          <>
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={blog.title} />
+            <meta property="og:description" content={blog.description} />
+            <meta
+              property="og:image"
+              content={`${window.location.origin}${blog.image}`}
+            />
+            <meta property="og:url" content={shareUrl} />
+
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={blog.title} />
+            <meta
+              name="twitter:description"
+              content={blog.description}
+            />
+            <meta
+              name="twitter:image"
+              content={`${window.location.origin}${blog.image}`}
+            />
+
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: blog.title,
+                description: blog.description,
+                image: [`${window.location.origin}${blog.image}`],
+                datePublished: blog.date,
+                author: {
+                  "@type": "Person",
+                  name: "Aprilio",
+                },
+              })}
+            </script>
+          </>
+        )}
+      </Helmet>
+      {/* ======================================================================== */}
+
       <style>{`
         * { box-sizing: border-box }
         body { margin: 0; background:#000; color:#fff; font-family: system-ui }
