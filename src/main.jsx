@@ -6,6 +6,8 @@ import App from "./App";
 import Socials from "./Socials";
 import Stats from "./Stats";
 import Blog from "./Blog";
+import ScrollToTop from "./components/ScrollToTop";
+
 import NotFound from "./NotFound";
 
 const clickSound = new Audio("/click.ogg");
