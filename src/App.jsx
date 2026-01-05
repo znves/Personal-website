@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import AdBanner from "./components/AdBanner";
 import AdBannerr from "./components/AdBannerr";
+import AdBannerrr from "./components/AdBannerrr";
 
 export default function AboutMe() {
   return (
@@ -241,6 +242,7 @@ export default function AboutMe() {
 
           <AdBanner />
           <AdBannerr />
+          <AdBannerrr />
           <Footer />
 
         </div>
