@@ -186,6 +186,8 @@ export default function AboutMe() {
             </div>
           </div>
 
+          <AdBannerrr />
+          
           <div className="section">
             <h2>About Me</h2>
             <div className="about-text">
@@ -242,7 +244,6 @@ export default function AboutMe() {
 
           <AdBanner />
           <AdBannerr />
-          <AdBannerrr />
           <Footer />
 
         </div>
