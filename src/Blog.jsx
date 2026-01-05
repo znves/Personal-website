@@ -13,6 +13,7 @@ import { Helmet } from "react-helmet"; // ✅ TAMBAHAN (TIDAK HAPUS APA2)
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AdBanner from "./components/AdBanner";
+import AdBannerr from "./components/AdBannerr";
 import FooterSpacer from "./components/FooterSpacer";
 import blogData from "./data/blog.json";
 
@@ -362,6 +363,7 @@ export default function Blog() {
       </div>
 
       <AdBanner />
+      <AdBannerr />
       <FooterSpacer />
       <Footer />
 
