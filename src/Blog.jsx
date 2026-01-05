@@ -305,6 +305,8 @@ export default function Blog() {
                 </button>
               </div>
 
+              <AdBannerrr />
+              
               <img src={blog.image} className="detail-image" />
               <div className="detail-content">{blog.content}</div>
 
@@ -365,7 +367,6 @@ export default function Blog() {
 
       <AdBanner />
       <AdBannerr />
-      <AdBannerrr />
       <FooterSpacer />
       <Footer />
 
