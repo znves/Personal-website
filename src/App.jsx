@@ -4,6 +4,7 @@ import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import AdBanner from "./components/AdBanner";
+import AdBanner2 from "./components/AdBanner2";
 
 export default function AboutMe() {
   return (
@@ -239,6 +240,7 @@ export default function AboutMe() {
           </div>
 
           <AdBanner />
+          <AdBanned2 />
           <Footer />
 
         </div>
