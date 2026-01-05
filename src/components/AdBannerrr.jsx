@@ -5,23 +5,25 @@ export default function AdDualEdge() {
   const rightRef = useRef(null);
   const [canShow, setCanShow] = useState(false);
 
-  // desktop only
+  // desktop only + offset konten
   useEffect(() => {
     if (window.innerWidth >= 1280) {
       setCanShow(true);
 
-      // geser konten biar ga ketutup
+      // geser konten + pastikan bg hitam
       document.body.style.paddingLeft = "180px";
       document.body.style.paddingRight = "180px";
+      document.body.style.backgroundColor = "#000";
     }
 
     return () => {
       document.body.style.paddingLeft = "";
       document.body.style.paddingRight = "";
+      document.body.style.backgroundColor = "";
     };
   }, []);
 
-  // load LEFT ad
+  // LEFT AD
   useEffect(() => {
     if (!canShow || !leftRef.current) return;
     if (window.__ADSTERRA_LEFT__) return;
@@ -39,17 +41,14 @@ export default function AdDualEdge() {
     s.src =
       "https://www.highperformanceformat.com/170efe53479927171645a301d1c7a00a/invoke.js";
     s.async = true;
-
     leftRef.current.appendChild(s);
 
     setTimeout(() => {
-      try {
-        delete window.atOptions;
-      } catch {}
+      try { delete window.atOptions; } catch {}
     }, 1500);
   }, [canShow]);
 
-  // load RIGHT ad (delay dikit)
+  // RIGHT AD (delay dikit)
   useEffect(() => {
     if (!canShow || !rightRef.current) return;
     if (window.__ADSTERRA_RIGHT__) return;
@@ -68,28 +67,31 @@ export default function AdDualEdge() {
       s.src =
         "https://www.highperformanceformat.com/170efe53479927171645a301d1c7a00a/invoke.js";
       s.async = true;
-
       rightRef.current.appendChild(s);
 
       setTimeout(() => {
-        try {
-          delete window.atOptions;
-        } catch {}
+        try { delete window.atOptions; } catch {}
       }, 1500);
     }, 600);
   }, [canShow]);
 
-  // mobile = nothing
   if (!canShow) return null;
 
   return (
     <>
       <style>{`
+        /* WRAPPER FIXED FULL HITAM */
         .ad-edge {
           position: fixed;
-          top: 90px;
-          width: 160px;
+          top: 0;
+          bottom: 0;
+          width: 180px;
+          background: #000;
           z-index: 10;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          padding-top: 90px;
           user-select: none;
         }
 
@@ -101,39 +103,60 @@ export default function AdDualEdge() {
           right: 0;
         }
 
+        .ad-inner {
+          width: 160px;
+        }
+
         .ad-label {
           font-size: 11px;
-          color: #aaa;
-          margin: 0 0 4px 8px;
+          color: #888;
+          margin: 0 0 6px 6px;
         }
 
         .ad-box {
           width: 160px;
           height: 300px;
-          background: #050505;
-          border: 1px solid rgba(255,255,255,0.2);
+          background: #000;
+          border: 1px solid rgba(255,255,255,0.15);
           border-radius: 12px;
           overflow: hidden;
+          position: relative;
+        }
+
+        /* anti putih saat kosong */
+        .ad-box::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: #000;
+          z-index: 0;
         }
 
         .ad-box iframe {
+          position: relative;
+          z-index: 1;
           border: none;
+          background: transparent;
         }
       `}</style>
 
       {/* LEFT */}
       <div className="ad-edge ad-left">
-        <div className="ad-label">Advertisement from Adsterra</div>
-        <div className="ad-box">
-          <div ref={leftRef} />
+        <div className="ad-inner">
+          <div className="ad-label">Advertisement from Adsterra</div>
+          <div className="ad-box">
+            <div ref={leftRef} />
+          </div>
         </div>
       </div>
 
       {/* RIGHT */}
       <div className="ad-edge ad-right">
-        <div className="ad-label">Advertisement from Adsterra</div>
-        <div className="ad-box">
-          <div ref={rightRef} />
+        <div className="ad-inner">
+          <div className="ad-label">Advertisement from Adsterra</div>
+          <div className="ad-box">
+            <div ref={rightRef} />
+          </div>
         </div>
       </div>
     </>
