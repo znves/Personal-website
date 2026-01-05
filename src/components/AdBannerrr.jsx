@@ -3,14 +3,12 @@ import { useEffect, useRef, useState } from "react";
 export default function AdDualEdge() {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
-  const [canShow, setCanShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-  // desktop only + offset konten
+  // Desktop only + offset konten
   useEffect(() => {
     if (window.innerWidth >= 1280) {
-      setCanShow(true);
-
-      // geser konten + pastikan bg hitam
+      setShow(true);
       document.body.style.paddingLeft = "180px";
       document.body.style.paddingRight = "180px";
       document.body.style.backgroundColor = "#000";
@@ -25,12 +23,10 @@ export default function AdDualEdge() {
 
   // LEFT AD
   useEffect(() => {
-    if (!canShow || !leftRef.current) return;
-    if (window.__ADSTERRA_LEFT__) return;
-    window.__ADSTERRA_LEFT__ = true;
+    if (!show || !leftRef.current) return;
 
     window.atOptions = {
-      key: "170efe53479927171645a301d1c7a00a",
+      key: "KEY_LEFT_160x300", // 🔴 GANTI KEY KIRI
       format: "iframe",
       height: 300,
       width: 160,
@@ -39,24 +35,23 @@ export default function AdDualEdge() {
 
     const s = document.createElement("script");
     s.src =
-      "https://www.highperformanceformat.com/170efe53479927171645a301d1c7a00a/invoke.js";
+      "https://www.highperformanceformat.com/KEY_LEFT_160x300/invoke.js";
     s.async = true;
+
     leftRef.current.appendChild(s);
 
     setTimeout(() => {
       try { delete window.atOptions; } catch {}
-    }, 1500);
-  }, [canShow]);
+    }, 1200);
+  }, [show]);
 
-  // RIGHT AD (delay dikit)
+  // RIGHT AD (delay biar gak bentrok)
   useEffect(() => {
-    if (!canShow || !rightRef.current) return;
-    if (window.__ADSTERRA_RIGHT__) return;
-    window.__ADSTERRA_RIGHT__ = true;
+    if (!show || !rightRef.current) return;
 
     setTimeout(() => {
       window.atOptions = {
-        key: "170efe53479927171645a301d1c7a00a",
+        key: "KEY_RIGHT_160x300", // 🔴 GANTI KEY KANAN
         format: "iframe",
         height: 300,
         width: 160,
@@ -65,22 +60,22 @@ export default function AdDualEdge() {
 
       const s = document.createElement("script");
       s.src =
-        "https://www.highperformanceformat.com/170efe53479927171645a301d1c7a00a/invoke.js";
+        "https://www.highperformanceformat.com/KEY_RIGHT_160x300/invoke.js";
       s.async = true;
+
       rightRef.current.appendChild(s);
 
       setTimeout(() => {
         try { delete window.atOptions; } catch {}
-      }, 1500);
+      }, 1200);
     }, 600);
-  }, [canShow]);
+  }, [show]);
 
-  if (!canShow) return null;
+  if (!show) return null;
 
   return (
     <>
       <style>{`
-        /* WRAPPER FIXED FULL HITAM */
         .ad-edge {
           position: fixed;
           top: 0;
@@ -89,19 +84,13 @@ export default function AdDualEdge() {
           background: #000;
           z-index: 10;
           display: flex;
-          align-items: flex-start;
           justify-content: center;
           padding-top: 90px;
           user-select: none;
         }
 
-        .ad-left {
-          left: 0;
-        }
-
-        .ad-right {
-          right: 0;
-        }
+        .ad-left { left: 0; }
+        .ad-right { right: 0; }
 
         .ad-inner {
           width: 160px;
@@ -123,7 +112,7 @@ export default function AdDualEdge() {
           position: relative;
         }
 
-        /* anti putih saat kosong */
+        /* anti putih */
         .ad-box::before {
           content: "";
           position: absolute;
