@@ -167,7 +167,7 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://github.com/vestionz"
+              href="https://github.com/znves"
               target="_blank"
               rel="noreferrer"
               className="contact-card"
@@ -176,13 +176,13 @@ export default function Contact() {
                 <FaGithub />
               </div>
               <div className="contact-text">
-                <strong>@vestionz</strong>
+                <strong>@znves</strong>
                 <span>Check my Project on Github</span>
               </div>
             </a>
 
             <a
-              href="https://tiktok.com/@akbaraprilioo"
+              href="https://tiktok.com/@sopbandung"
               target="_blank"
               rel="noreferrer"
               className="contact-card"
@@ -191,7 +191,7 @@ export default function Contact() {
                 <FaTiktok />
               </div>
               <div className="contact-text">
-                <strong>@akbaraprilioo</strong>
+                <strong>@sopbandung</strong>
                 <span>Follow me on Tiktok</span>
               </div>
             </a>
