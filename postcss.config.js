@@ -5,4 +5,4 @@ export default {
   },
 }
 
-// Github: @vestionz
+// Github: znves
