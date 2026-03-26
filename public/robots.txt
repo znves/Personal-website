@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.aprilio.my.id/sitemap.xml
+Sitemap: https://www.znves.vercel.app/sitemap.xml
