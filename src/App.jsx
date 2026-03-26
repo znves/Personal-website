@@ -177,8 +177,8 @@ export default function AboutMe() {
             </div>
             <div className="socials">
               <a href="https://Instagram.com/akbaraprilioo"><FaInstagram /></a>
-              <a href="https://tiktok.com/@akbaraprilioo"><FaTiktok /></a>
-              <a href="https://github.com/vestionz"><FaGithub /></a>
+              <a href="https://tiktok.com/@sopbandung"><FaTiktok /></a>
+              <a href="https://github.com/znves"><FaGithub /></a>
               <a href="https://discord.com/users/995913592253710356"><FaDiscord /></a>
             </div>
           </div>
