@@ -26,3 +26,18 @@ Deployment on Vercel:
 ## ⚖️ License
 
 This project is open-sourced under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+  <img src="https://media1.tenor.com/m/a6S35wgiCOsAAAAC/deku-java.gif" width="400" alt="Deku Animation"/>
+  
+  ### 🛡 Let's Connect!
+
+  <a href="https://instagram.com/akbarapriloo" target="_blank">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+  </a>
+  <a href="https://tiktok.com/@sopbandung" target="_blank">
+    <img src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white" alt="TikTok" />
+  </a>
+</div>
