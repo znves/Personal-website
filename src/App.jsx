@@ -221,7 +221,7 @@ export default function AboutMe() {
                   </div>
                 ))}
                 {[
-                  { name: "Skynefh", img: "/nefhlab.webp", link: "https://nefhlab.my.id" },
+                  { name: "Nefhlab", img: "/nefhlab.webp", link: "https://nefhlab.my.id" },
                   { name: "Wiradaka", img: "/wiradaka.webp", link: "https://wiradaka.my.id" },
                   { name: "Rhinzan Bot", img: "/rhinzan.webp", link: "https://rhinzan.pages.dev" },
                   { name: "WIW-Digital", img: "/wiw.webp", link: "https://wiw.my.id" },
