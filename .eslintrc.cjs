@@ -20,4 +20,4 @@ module.exports = {
   },
 }
 
-// Github: @vestionz
+// Github: znves
