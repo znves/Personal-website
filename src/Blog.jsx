@@ -9,13 +9,10 @@ import {
 import { MdVerified } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import { Helmet } from "react-helmet"; // ✅ TAMBAHAN (TIDAK HAPUS APA2)
+import { Helmet } from "react-helmet"; 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AdBanner from "./components/AdBanner";
-import AdBannerr from "./components/AdBannerr";
 import FooterSpacer from "./components/FooterSpacer";
-import AdBannerrr from "./components/AdBannerrr";
 import blogData from "./data/blog.json";
 
 const slugify = text =>
@@ -304,8 +301,6 @@ export default function Blog() {
                   <FaShareAlt />
                 </button>
               </div>
-
-              <AdBannerrr />
               
               <img src={blog.image} className="detail-image" />
               <div className="detail-content">{blog.content}</div>
@@ -365,8 +360,6 @@ export default function Blog() {
         </div>
       </div>
 
-      <AdBanner />
-      <AdBannerr />
       <FooterSpacer />
       <Footer />
 
