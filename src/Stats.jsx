@@ -16,13 +16,10 @@ import {
 } from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AdBanner from "./components/AdBanner";
-import AdBannerr from "./components/AdBannerr";
-import AdBannerrr from "./components/AdBannerrr";
 import FooterSpacer from "./components/FooterSpacer";
 
 export default function GitHubStats() {
-  const username = "vestionz"; // USERNAME GITHUB
+  const username = "znves"; // USERNAME GITHUB
   const [profile, setProfile] = useState(null);
   const [repos, setRepos] = useState([]);
 
@@ -297,13 +294,10 @@ export default function GitHubStats() {
               </div>
             </div>
 
-
             <div className="repo-section">
               <div className="repo-title">
                 <FaCode /> Public Projects
               </div>
-
-              <AdBannerrr />
               
               {repos.length > 0 ? (
                 <div className="repo-list">
@@ -359,9 +353,7 @@ export default function GitHubStats() {
           </div>
         </div>
       </div>
-
-      <AdBanner />
-      <AdBannerr />
+      
       <FooterSpacer />
       <Footer />
     </>
