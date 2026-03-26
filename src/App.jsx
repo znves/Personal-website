@@ -3,9 +3,6 @@ import { MdVerified } from "react-icons/md";
 import { FaUsers, FaUser, FaChartBar } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import AdBanner from "./components/AdBanner";
-import AdBannerr from "./components/AdBannerr";
-import AdBannerrr from "./components/AdBannerrr";
 
 export default function AboutMe() {
   return (
@@ -185,8 +182,6 @@ export default function AboutMe() {
               <a href="https://discord.com/users/995913592253710356"><FaDiscord /></a>
             </div>
           </div>
-
-          <AdBannerrr />
           
           <div className="section">
             <h2>About Me</h2>
@@ -242,8 +237,6 @@ export default function AboutMe() {
             </div>
           </div>
 
-          <AdBanner />
-          <AdBannerr />
           <Footer />
 
         </div>
