@@ -7,9 +7,6 @@ import {
 } from "react-icons/fa";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import AdBanner from "./components/AdBanner";
-import AdBannerr from "./components/AdBannerr";
-import AdBannerrr from "./components/AdBannerrr";
 import FooterSpacer from "./components/FooterSpacer";
 
 export default function Contact() {
@@ -195,8 +192,6 @@ export default function Contact() {
                 <span>Follow me on Tiktok</span>
               </div>
             </a>
-
-            <AdBannerrr />
             
             <a
               href="https://instagram.com/akbaraprilioo"
@@ -216,8 +211,6 @@ export default function Contact() {
         </div>
       </div>
 
-      <AdBanner />
-      <AdBannerr />
       <FooterSpacer />
       <Footer />
     </>
