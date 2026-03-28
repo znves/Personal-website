@@ -34,7 +34,7 @@ This project is open-sourced under the MIT License - see the [LICENSE](LICENSE) 
   
   ### 🛡 Let's Connect!
 
-  <a href="https://instagram.com/akbarapriloo" target="_blank">
+  <a href="https://instagram.com/akbaraprilioo" target="_blank">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
   </a>
   <a href="https://tiktok.com/@sopbandung" target="_blank">
